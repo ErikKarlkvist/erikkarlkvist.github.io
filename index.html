@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Material Design Lite -->
+    <script src="mdl/material.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- MDL -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="mdl/material.min.css">
+    <!-- Custome css -->
+    <link rel="stylesheet" type="text/css" href="card.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Erik Karlkvist</title>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title mdl-layout--small-screen-only">Erik Karlkvist</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="">About me</a>
+            <a class="mdl-navigation__link" href="">Projects</a>
+            <a class="mdl-navigation__link" href="https://github.com/ErikKarlkvist">Github</a>
+            <a class="mdl-navigation__link" href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=nav_responsive_tab_profile">LinkedIn</a>
+          </nav>
+        </div>
+        <div class="mdl-grid">
+
+          <div class="card-image mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand"></div>
+          </div>
+
+          <div class="profile-card mdl-card mdl-layout--large-screen-only mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Erik Karlkvist</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <p> I'm a 21 year old student from Vetlanda, Småland. I am currently at my last year of B.Sc studying Software Engineering at
+                Chalmers University of Technology in Gothenburg. I have a huge interest in software developement and I love working with new projects.
+
+              <p><b>Email:</b> erikkarlkvist95@gmail.com  </p>
+            </div>
+          </div>
+
+        </div>
+      </header>
+      <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <span class="mdl-layout-title">Erik Karlkvist</span>
+        <nav class="mdl-navigation ">
+          <a class="mdl-navigation__link" href="">About me</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+    			<div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+    				<figure class="mdl-card__media">
+    					<img src="images/code.jpg" alt="" />
+    				</figure>
+    				<div class="mdl-card__title">
+    					<h1 class="mdl-card__title-text">This website</h1>
+    				</div>
+    				<div class="mdl-card__supporting-text">
+    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+    				</div>
+    				<div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+              <div class="mdl-layout-spacer"></div>
+    	      </div>
+    			</div>
+
+    			<div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    				<figure class="mdl-card__media">
+    					<img src="http://tfirdaus.github.io/mdl/images/html5.jpg" alt="" />
+    				</figure>
+    				<div class="mdl-card__title">
+    					<h1 class="mdl-card__title-text">Snake in haskell</h1>
+    				</div>
+    				<div class="mdl-card__supporting-text">
+    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+    				</div>
+    				<div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+              <div class="mdl-layout-spacer"></div>
+        	  </div>
+    			</div>
+
+          <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    				<figure class="mdl-card__media">
+    					<img src="http://tfirdaus.github.io/mdl/images/html5.jpg" alt="" />
+    				</figure>
+    				<div class="mdl-card__title">
+    					<h1 class="mdl-card__title-text">Gym app</h1>
+    				</div>
+    				<div class="mdl-card__supporting-text">
+    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+    				</div>
+    				<div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+              <div class="mdl-layout-spacer"></div>
+        	  </div>
+    			</div>
+
+
+		    </div>
+      </main>
+
+    </div>
+  </body>
+</html>

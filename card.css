@@ -1,0 +1,45 @@
+.mdl-grid {
+	max-width: 1200px;
+}
+.mdl-card__media {
+	margin: 0;
+  background-color: #fff;
+}
+.mdl-card__media > img {
+	max-width: 100%;
+
+}
+.mdl-card__actions {
+	display: flex;
+	box-sizing:border-box;
+	align-items: center;
+}
+.mdl-card__actions > .mdl-button--icon {
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+.profile-card.mdl-card {
+  width: 515px;
+}
+
+.profile-card > .mdl-card__title{
+  align-items: flex-start;
+  background-color: #212121;
+  color: #fff;
+}
+.profile-card > .mdl-card__menu {
+  color: #fff;
+}
+
+.card-image.mdl-card {
+  width: 256px;
+  height: 256px;
+  background: url('images/profile.jpg') center / cover;
+}
+
+.card-image__filename {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}

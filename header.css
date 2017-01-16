@@ -1,0 +1,9 @@
+.mdl-layout__header {
+  background-color: #424242;
+  background: url('images/head.jpg') center / cover;
+}
+
+.mdl-layout__header > .mdl-grid {
+  min-width: 1200px;
+  text-align: left;
+}
