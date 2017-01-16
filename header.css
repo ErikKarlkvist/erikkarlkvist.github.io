@@ -7,3 +7,14 @@
   min-width: 1200px;
   text-align: left;
 }
+
+.mdl-layout__drawer >.drawer_picture{
+  height: 180px;
+  width: 250px;
+  background: url('images/profile.jpg') center/ cover;
+}
+
+.mdl-layout__drawer > .mdl-layout-title {
+  background: #212121;
+  color: #fff;
+}
