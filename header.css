@@ -8,13 +8,15 @@
   text-align: left;
 }
 
-.mdl-layout__drawer >.drawer_picture{
-  height: 180px;
-  width: 250px;
-  background: url('images/profile.jpg') center/ cover;
-}
-
 .mdl-layout__drawer > .mdl-layout-title {
   background: #212121;
   color: #fff;
+}
+
+.page_title > a:link, a:visited {
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
