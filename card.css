@@ -24,6 +24,12 @@
 	height: 230px;
 }
 
+.project_blog-card > .mdl-card__title{
+  align-items: flex-start;
+  background-color: #212121;
+  color: #fff;
+}
+
 .profile-card > .mdl-card__title{
   align-items: flex-start;
   background-color: #212121;

@@ -20,3 +20,12 @@
     text-decoration: none;
     display: inline-block;
 }
+
+.a2:link, .a2:visited {
+  color: red;
+  display: inline-block;
+}
+
+.active_tab {
+  background-color: #e0e0e0;
+}
