@@ -1,6 +1,5 @@
 .mdl-layout__header {
-  background-color: #424242;
-  background: url('images/head.jpg') center / cover;
+  background-color: #2654B5;
 }
 
 .mdl-layout__header > .mdl-grid {
@@ -28,4 +27,20 @@
 
 .active_tab {
   background-color: #e0e0e0;
+}
+
+p{
+  color: black;
+}
+
+.buffer {
+  margin-top:5px;
+  margin-left:5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.top_bottom-buffer{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

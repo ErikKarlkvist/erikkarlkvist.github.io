@@ -20,8 +20,8 @@
 }
 
 .profile-card.mdl-card {
-  width: 515px;
-	height: 230px;
+  width: 420px;
+	height: 200px;
 }
 
 .project_blog-card > .mdl-card__title{
@@ -41,8 +41,8 @@
 }
 
 .card-image.mdl-card {
-  width: 230px;
-  height: 230px;
+  width: 200px;
+  height: 100px;
   background: url('images/profile.jpg') center / cover;
 }
 
