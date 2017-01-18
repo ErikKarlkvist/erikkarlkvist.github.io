@@ -40,6 +40,14 @@ p{
   margin-right: 5px;
 }
 
+.left-buffer{
+  margin-left: 20px;
+}
+
+.grey_background{
+  background: #F5F5F5;
+}
+
 .top_bottom-buffer{
   margin-top: 20px;
   margin-bottom: 20px;
