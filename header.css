@@ -1,5 +1,10 @@
 .mdl-layout__header {
   background-color: #2654B5;
+
+  animation-name: slideDown;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
 }
 
 .mdl-layout__header > .mdl-grid {

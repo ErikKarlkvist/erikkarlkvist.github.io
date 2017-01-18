@@ -1,6 +1,7 @@
 .mdl-grid {
 	max-width: 1200px;
 }
+
 .mdl-card__media {
 	margin: 0;
   background-color: #fff;
@@ -22,6 +23,17 @@
 .profile-card.mdl-card {
   width: 420px;
 	height: 200px;
+
+	animation-name: showDiv;
+  animation-iteration-count: 1;
+	animation-duration: 3s;
+}
+
+.project_blog-card {
+	animation-name: slideUpMini;
+  animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+  animation-duration: 1s;
 }
 
 .project_blog-card > .mdl-card__title{
@@ -44,6 +56,8 @@
   width: 200px;
   height: 100px;
   background: url('images/profile.jpg') center / cover;
+
+
 }
 
 .card-image__filename {

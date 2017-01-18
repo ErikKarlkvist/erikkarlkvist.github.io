@@ -62,41 +62,48 @@
           <a class="mdl-navigation__link" href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=nav_responsive_tab_profile">LinkedIn</a>
         </nav>
       </div>
-      <main class="mdl-layout__content">
+      <main class="mdl-layout__content grey_background">
         <div class= "mdl-grid">
-          <div class="project_blog-card mdl-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-shadow--2dp">
-
+          <div class="project_blog-card mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--2dp">
             <div class="mdl-card__title" >
               <h1 class="mdl-card__title-text">Snake game using Haste and Haskell</h1>
             </div>
-            <div class = "mdl-grid">
-              <div class ="mdl-card mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet">
-                <object type="text/html" data="projects/MainHaste.html" width="800px" height="450px" style="overflow:auto;"></object>
-              </div>
-              <div class ="mdl-card mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                <p>In the functional programming course me and Emil Axelsson created this snake game. It uses <a class="a2" href="http://haste-lang.org/">haste</a> to create the HTML elements and the snake runs in
-                  <a class="a2" href="https://www.haskell.org/"> haskell</a>.</p>
-                <p><b>Run the game by clicking on it and then push any arrow key to move.</b> <i>This only works on desktop computers.</i><p>
-                These are some examples from the code that runs the game. The snake data is either the end of the snake or a position followed by the rest of the snake. The updateTileInGrid function
-                show how any tile is updated every time the game ticks.
-                  <pre>type Pos = (Int, Int)
-data Snake = Add Pos Snake | End
+            <div class="row buffer">
 
-updateTileInGrid :: Grid -> Pos -> Tile -> Grid
-updateTileInGrid (Grid grid) (row, col) tile = newGrid
-  where newGrid = Grid (grid !!= (row,((grid !! row) !!= (col,tile))))</pre>
-                  <p>The following functions creates a picture that is painted every time the game ticks. It runs through the entire matrix of the snake game and draws rectangles or circles at the correponding positions.</p>
-                  <pre>fillTiles' :: [Tile] -> Int -> Int-> Picture ()
-fillTiles' [] _  _   = return ()
-fillTiles' (x:xs) row col = do
-    let drow = fromIntegral row
-    let dcol = fromIntegral col
-    case x of Empty     -> color (RGB 255 255 255) $ stroke $ rect (drow, dcol) (drow+20, dcol+20)
-              SnakeBody -> color (RGB 255 0 0)     $ fill   $ circle (drow+10, dcol+10) 10
-              Coin      -> color (RGB 255 215 0)   $ fill   $ circle (drow+10, dcol+10) 10
-    fillTiles' xs (row+20) col</pre>
+              <div class="col-xs-12 col-md-5 top_bottom-buffer">
+                <div class ="mdl-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+                  <object type="text/html" data="projects/MainHaste.html" width="800px" height="450px" style="overflow:auto;"></object>
+                </div>
               </div>
+
+              <div class="col-xs-12 col-md-7 top_bottom-buffer">
+                <div class ="mdl-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+                  <p>In the functional programming course me and Emil Axelsson created this snake game. It uses <a class="a2" href="http://haste-lang.org/">haste</a> to create the HTML elements and the snake runs in
+                    <a class="a2" href="https://www.haskell.org/"> haskell</a>.</p>
+                  <p><b>Run the game by clicking on it and then push any arrow key to move.</b> <i>This only works on desktop computers.</i><p>
+                  These are some examples from the code that runs the game. The snake data is either the end of the snake or a position followed by the rest of the snake. The updateTileInGrid function
+                  show how any tile is updated every time the game ticks.
+                    <pre>type Pos = (Int, Int)
+  data Snake = Add Pos Snake | End
+
+  updateTileInGrid :: Grid -> Pos -> Tile -> Grid
+  updateTileInGrid (Grid grid) (row, col) tile = newGrid
+    where newGrid = Grid (grid !!= (row,((grid !! row) !!= (col,tile))))</pre>
+                    <p>The following functions creates a picture that is painted every time the game ticks. It runs through the entire matrix of the snake game and draws rectangles or circles at the correponding positions.</p>
+                    <pre>fillTiles' :: [Tile] -> Int -> Int-> Picture ()
+  fillTiles' [] _  _   = return ()
+  fillTiles' (x:xs) row col = do
+      let drow = fromIntegral row
+      let dcol = fromIntegral col
+      case x of Empty     -> color (RGB 255 255 255) $ stroke $ rect (drow, dcol) (drow+20, dcol+20)
+                SnakeBody -> color (RGB 255 0 0)     $ fill   $ circle (drow+10, dcol+10) 10
+                Coin      -> color (RGB 255 215 0)   $ fill   $ circle (drow+10, dcol+10) 10
+      fillTiles' xs (row+20) col</pre>
+                </div>
+              </div>
+
             </div>
+
             <div class="mdl-card__actions mdl-card--border">
               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect a2" href="https://github.com/emiilax/TDA452-FuncProg/tree/master/project">View source code</a>
               <div class="mdl-layout-spacer"></div>

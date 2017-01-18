@@ -1,0 +1,22 @@
+@keyframes showDiv {
+    0% {opacity: 0}
+		100% {opacity: 1}
+}
+
+@keyframes slideUpMini {
+	0% {
+			transform: translateY(25%);
+	}
+	100% {
+			transform: translateY(0);
+	}
+}
+
+@keyframes slideDown {
+	0% {
+			transform: translateY(-100%);
+	}
+	100% {
+			transform: translateY(0);
+	}
+}
