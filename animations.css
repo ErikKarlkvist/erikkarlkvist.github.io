@@ -26,14 +26,29 @@
       transform: translate3d(40%,300%,0);
   }
   40% {
-      transform: translate3d(40%,150%,0);
+      transform: translate3d(40%,50%,0);
   }
   100% {
-      transform: translate3d(100%,150%,0);
+      transform: translate3d(100%,50%,0);
   }
 }
 
+@keyframes emil {
+  0% {
+      transform: rotate3D(1,1,1,720deg);
+    }
+}
+
+#emilDiv {
+  height: 200px;
+  width: 200px;
+  animation-name: emil;
+  animation-iteration-count: 50;
+  animation-duration: 4.5s;
+}
+
 #mydiv {
+
   animation-name: woaw;
   animation-iteration-count: 50;
   animation-timing-function: ease-out;
