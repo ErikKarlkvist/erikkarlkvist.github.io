@@ -26,14 +26,11 @@
 
 	animation-name: showDiv;
   animation-iteration-count: 1;
-	animation-duration: 3s;
+	animation-duration: 1.5s;
 }
 
 .project_blog-card {
-	animation-name: slideUpMini;
-  animation-iteration-count: 1;
-	animation-timing-function: ease-out;
-  animation-duration: 1s;
+
 }
 
 .project_blog-card > .mdl-card__title{
