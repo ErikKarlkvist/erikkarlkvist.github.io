@@ -1,143 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Material Design Lite -->
-    <script src="mdl/material.min.js"></script>
-    <script src="animations.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- MDL -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Custome css -->
+    <link rel="stylesheet" type="text/css" href="background.css">
+    <!-- MDL-->
     <link rel="stylesheet" href="mdl/material.min.css">
 
-    <!-- Custome css -->
-    <link rel="stylesheet" type="text/css" href="animations.css">
-    <link rel="stylesheet" type="text/css" href="card.css">
-    <link rel="stylesheet" type="text/css" href="header.css">
+    <!--Scroll reveal script -->
+    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
 
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Erik Karlkvist</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script>
+      $(function() {
+          $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: target.offset().top - 20
+                }, 1000);
+                return false;
+              }
+            }
+          });
+      });
+    </script>
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header ">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title mdl-layout--small-screen-only">
-            <h3><a class="page_title" href="index.html">Erik Karlkvist</a></h3>
-          </span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">About me</a>
-            <a class="mdl-navigation__link" href="projects.html">Projects</a>
-            <a class="mdl-navigation__link" href="blog.html">Blog</a>
-            <a class="mdl-navigation__link" href="https://github.com/ErikKarlkvist">Github</a>
-            <a class="mdl-navigation__link" href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=nav_responsive_tab_profile">LinkedIn</a>
-          </nav>
+    <div id="page">
+      <div id = "hello" class="start">
+        <div class="showFirst">
+            <h1>Hello</h1>
         </div>
-
-      </header>
-      <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <span class="mdl-layout-title">Erik Karlkvist</span>
-        <nav class="mdl-navigation ">
-          <a class="mdl-navigation__link" href="">About me</a>
-          <a class="mdl-navigation__link" href="projects.html">Projects</a>
-          <a class="mdl-navigation__link" href="blog.html">Blog</a>
-          <a class="mdl-navigation__link" href="https://github.com/ErikKarlkvist">Github</a>
-          <a class="mdl-navigation__link" href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=nav_responsive_tab_profile">LinkedIn</a>
-        </nav>
+        <div class="showSecond">
+            <h2>I am <a href="#aboutMe"> Erik Karlkvist</a></h2>
+        </div>
+        <div class="showThird">
+            <h3>View my <a href="#portfolio">projects</a> or <a href="#contact">contact</a> me.</h3>
+        </div>
       </div>
-
-      <main class="mdl-layout__content grey_background">
-        <div class="mdl-grid ">
-          <div class="card-image mdl-card mdl-layout--large-screen-only mdl-shadow--2dp left-buffer">
-            <div class="mdl-card__title mdl-card--expand "></div>
-          </div>
-
-          <div class="profile-card mdl-card mdl-layout--large-screen-only mdl-shadow--2dp">
-            <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">Erik Karlkvist</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-              <p> I'm a 21 year old student from Vetlanda, Småland. I am currently at my last year of B.Sc studying Software Engineering at
-                Chalmers University of Technology in Gothenburg. I have a huge interest in software developement and I love working with new projects.
-            </div>
-          </div>
-
-        </div>
-
-        <div class= "mdl-grid">
-          <div class="project_blog-card mdl-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet ">
-            <div>
-              <div class="row buffer">
-
-                <div class="col-xs-12 col-md-8 top_bottom-buffer">
-                  <div class="mdl-card mdl-cell--12-col mdl-cell--12-col-tablet mdl-shadow--2dp">
-            				<figure class="mdl-card__media">
-            					<img src="images/SanFran/android.jpg" alt="" />
-            				</figure>
-            				<div class="mdl-card__title">
-            					<h1 class="mdl-card__title-text">San Fransisco</h1>
-            				</div>
-            				<div class="mdl-card__supporting-text">
-            					<p>Last year I went to San Fransisco to visit some software companies with the IT programme at Chalmers University of Technology. Here are some of the pictures of the trip.</p>
-            				</div>
-            				<div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="blog.html">Read More</a>
-                      <div class="mdl-layout-spacer"></div>
-                	  </div>
-            			</div>
-                </div>
-
-                <div class="col-xs-12 col-md-4 top_bottom-buffer">
-                  <div class="mdl-card mdl-cell--12-col mdl-cell--12-col-tablet mdl-shadow--2dp">
-            				<figure class="mdl-card__media">
-            					<img src="images/snake.jpg" alt="" />
-            				</figure>
-            				<div class="mdl-card__title">
-            					<h1 class="mdl-card__title-text">Snake in haskell</h1>
-            				</div>
-            				<div class="mdl-card__supporting-text">
-            					<p>A snake game I created togheter with Emil Axelsson in a functional programming course. Test it here!</p>
-            				</div>
-            				<div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="projects.html">Read More</a>
-                      <div class="mdl-layout-spacer"></div>
-                	  </div>
-            			</div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-         </div>
-
-
-
-
-
-
-
-		    </div>
-      </main>
-
     </div>
+
+    <div id="page">
+      <div id ="aboutMe" class="about-me" >
+        <h1>About Me</h1>
+          <div class="wrapper">
+            <div class = "left"> <div class="profile_image"></div></div>
+            <div class = "right">
+             <p>
+               I'm a 22 year old student from Vetlanda, Småland. I am currently at my last year of B.Sc studying Software Engineering at
+               Chalmers University of Technology in Gothenburg. I have a huge interest in software developement and I love working with new projects.
+             </p>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page">
+      <div id ="portfolio" class="folio">
+        <h1>Projects</h1>
+        <p>
+          TODO: Add stuff here
+        </p>
+      </div>
+    </div>
+
+    <div id="page">
+      <div id ="aboutMe" class="about-me" >
+        <div id ="contact" class="about-me" >
+          <h1>Contact</h1>
+            <div class="wrapper">
+               <p>
+                 List contact info here
+               </p>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      window.sr = ScrollReveal({ reset: true });
+      sr.reveal('.about-me', { duration: 1200, rotate: {x: 65} });
+      sr.reveal('.start', { duration: 1200 });
+      sr.reveal('.folio', { duration: 1200 });
+    </script>
   </body>
 </html>

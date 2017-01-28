@@ -1,0 +1,134 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic);
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    font-family: Ubuntu;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+#page {
+  width: 100%;
+  float: left;
+}
+
+#hello {
+  background: url('topimage.jpg') center / cover;
+  background-color: #2654B5;
+  color: #FFF;
+  text-align: center;
+  height:100vh;
+  padding-top: 50px;
+}
+
+#hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 40px;}
+
+#hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 150px;}
+#hello h3 {font-size: 30px; font-weight: 300; line-height: 48px; margin:0; margin-top: 20px;}
+
+#hello a {color: #FFF}
+#hello a:hover {color: #556270}
+
+.wrapper {
+  margin: auto;
+  width: 50%;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.left {
+  float:left;
+  margin-right: 10px;
+}
+
+.left > .profile_image {
+  width: 200px;
+  height: 200px;
+  background: url('images/profile.jpg') center / cover;
+}
+
+.right {
+  width: 60%;
+  float:left;
+  text-align: left;
+  margin-left: 0px;
+}
+
+#aboutMe {
+  background-color: #FFF;
+  color: #FFF;
+  text-align: center;
+  align-items: center;
+  height: 400px;
+  padding-top: 150px;
+}
+
+#aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #556270}
+
+#aboutMe p {font-size: 25px; font-weight: 300; margin: 0; color: #556270}
+
+#aboutMe a {color: #556270}
+#aboutMe a:hover {color: #556270}
+
+#portfolio {
+  background-color: #C44D58;
+  color: #FFF;
+  text-align: center;
+  align-items: center;
+  padding-top: 50px;
+  height: 100vh;
+  margin-top: 100px;
+}
+
+#portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #FFF;}
+
+#portfolio p {font-size: 25px; font-weight: 300; margin: 0; color: #FFF; margin-bottom: 20px;}
+
+#portfolio a {color: #FFF}
+#portfolio a:hover {color: #556270}
+
+.showFirst {
+  animation-name: showFirst;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+
+.showSecond {
+  animation-name: showLater;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+}
+
+.showThird {
+  animation-name: showLater;
+  animation-iteration-count: 1;
+  animation-duration: 4s;
+}
+
+.inline {
+  display: inline-block;
+  width: 50%;
+}
+
+.inline2 {
+  width: 50%;
+  display: inline-block;
+  vertical-align:top;
+}
+
+
+@keyframes showFirst {
+    0% {opacity: 0}
+		100% {opacity: 1}
+}
+
+@keyframes showLater {
+    0% {opacity: 0}
+    50% {opacity: 0}
+		100% {opacity: 1}
+}
