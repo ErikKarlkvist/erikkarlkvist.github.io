@@ -32,6 +32,15 @@ body {
 #hello a {color: #FFF}
 #hello a:hover {color: #556270}
 
+.center {
+  margin: auto;
+  width: 40%;
+  overflow: hidden;
+  min-width: 800px;
+  text-align: left;
+  margin-bottom: 100px;
+}
+
 .wrapper {
   margin: auto;
   width: 50%;
@@ -45,9 +54,10 @@ body {
   margin-right: 10px;
 }
 
-.left > .profile_image {
-  width: 200px;
-  height: 200px;
+.profile_image {
+  margin-left: 35%;
+  width: 300px;
+  height: 300px;
   background: url('images/profile.jpg') center / cover;
 }
 
@@ -63,8 +73,8 @@ body {
   color: #FFF;
   text-align: center;
   align-items: center;
-  height: 400px;
-  padding:top 20px;
+  height: 500px;
+  margin-bottom: 50px;
 }
 
 #aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #556270}
@@ -80,11 +90,8 @@ body {
   text-align: center;
   align-items: center;
   padding-top: 50px;
-  height: 100vh;
   margin-top: 100px;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari */
-  transform: rotate(20deg);
+
 }
 
 #portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #FFF;}
