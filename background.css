@@ -15,11 +15,10 @@ body {
 #page {
   width: 100%;
   float: left;
-  height: 100vh;
 }
 
 #hello {
-  background-color: #FFF;
+  background-color: rgba(0, 0, 0, 0.8);
   color: #FFF;
   text-align: center;
   padding-top: 50px;
@@ -32,6 +31,7 @@ body {
 
 #hello a {color: #FFF}
 #hello a:hover {color: #556270}
+
 
 .center {
   margin: auto;
@@ -76,6 +76,7 @@ body {
   align-items: center;
   height: 500px;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 #aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #556270}
@@ -103,7 +104,6 @@ body {
 #portfolio a:hover {color: #556270}
 
 .showFirst {
-  background-color: rgba(0, 0, 0, 0.8);
   animation-name: showFirst;
   animation-iteration-count: 1;
   animation-duration: 1s;
@@ -111,7 +111,6 @@ body {
 
 .showSecond {
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
   animation-name: showLater;
   animation-iteration-count: 1;
   animation-duration: 2s;
@@ -119,7 +118,6 @@ body {
 
 .showThird {
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
   animation-name: showLater;
   animation-iteration-count: 1;
   animation-duration: 4s;
