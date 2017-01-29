@@ -27,7 +27,7 @@ body {
 #hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 40px;}
 
 #hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 50px;}
-#hello h3 {font-size: 30px; font-weight: 300; line-height: 48px; margin:0; margin-top: 10px;}
+#hello h3 {font-size: 30px; font-weight: 300; line-height: 24px; margin:0; margin-bottom: 20px;}
 
 #hello a {color: #FFF}
 #hello a:hover {color: #556270}
@@ -42,6 +42,16 @@ body {
   margin-bottom: 100px;
 }
 
+.profile_image {
+  margin-left: 30%;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+  background: url('images/profile.jpg') center / cover;
+}
+
+
+
 .wrapper {
   margin: auto;
   width: 50%;
@@ -52,21 +62,14 @@ body {
 
 .left {
   float:left;
-  margin-right: 10px;
-}
-
-.profile_image {
-  margin-left: 30%;
-  width: 300px;
-  height: 300px;
-  background: url('images/profile.jpg') center / cover;
+  min-width: 500px;
 }
 
 .right {
-  width: 60%;
+  width: 30%;
   float:left;
   text-align: left;
-  margin-left: 0px;
+  min-height: 400px;
 }
 
 #aboutMe {
@@ -96,9 +99,10 @@ body {
 
 }
 
-#portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #FFF;}
+#portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 20px; color: #FFF;}
+#portfolio h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin-top: 50px; padding-top: 20px}
 
-#portfolio p {font-size: 25px; font-weight: 300; margin: 0; color: #FFF; margin-bottom: 20px;}
+#portfolio p {font-size: 20px; font-weight: 300; margin: 0; color: #FFF; margin-bottom: 20px;}
 
 #portfolio a {color: #FFF}
 #portfolio a:hover {color: #556270}
@@ -129,15 +133,8 @@ body {
   animation-duration: 4s;
 }
 
-.inline {
-  display: inline-block;
-  width: 50%;
-}
-
-.inline2 {
-  width: 50%;
-  display: inline-block;
-  vertical-align:top;
+.grey {
+  background-color: #373737;
 }
 
 

@@ -27,6 +27,7 @@
           });
       });
     </script>
+
   </head>
   <body>
     <div id="page">
@@ -59,12 +60,46 @@
     <div id="page">
       <div id ="portfolio" class="folio">
         <h1>Projects</h1>
-        <h2>Snake in Haskell</h2>
-        <div class="wrapper">
-          <div class = "left"> <object type="text/html" data="MainHaste.html" width="500px" height="450px"></object></div>
-          <div class = "right">
-            test
+
+        <div class ="project">
+          <h2 margin-top=20>Snake in Haskell</h2>
+          <div class="wrapper">
+            <div class = "left"> <div id ="noscroll"><object  type="text/html" data="MainHaste.html" width="500px" height="450px"></object></div> </div>
+            <div class = "right">
+              <p>
+                In the functional programming course me and Emil Axelsson created this snake game. It uses haste to create the HTML elements and the snake runs in haskell.
+              </p>
+              <p>
+                <b>Run the game by clicking on it and then push any arrow key to move. This only works on desktop computers.</b>
+              </p>
+            </div>
+          </div>
          </div>
+
+         <div class ="project grey">
+           <h2 margin-top=20>Gym statistics app</h2>
+           <div class="wrapper">
+             <div class = "left"> Image </div>
+             <div class = "right">
+               <p>
+                 In order to motivate myself to exercise more I created a simple android app that saves my gym statistics. My goal is to be able to share and use the application together with mygym partner.
+               </p>
+             </div>
+           </div>
+          </div>
+
+          <div class ="project">
+            <h2 margin-top=20>Electricity Innovation Challenge</h2>
+            <div class="wrapper">
+              <div class = "left"> Image</div>
+              <div class = "right">
+                <p>
+                  Text here
+                </p>
+              </div>
+            </div>
+           </div>
+
        </div>
       </div>
     </div>
@@ -90,6 +125,7 @@
       sr.reveal('.about-me', { duration: 1200, rotate: {x: 65} });
       sr.reveal('.start', { duration: 1200 });
       sr.reveal('.folio', { duration: 1200 });
+      sr.reveal('.project', { duration: 1200 ,rotate: {y: 65}});
     </script>
-  </body>
+
 </html>
