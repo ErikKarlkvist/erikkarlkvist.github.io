@@ -18,18 +18,16 @@ body {
 }
 
 #hello {
-  background: url('topimage.jpg') center / cover;
-  background-color: #2654B5;
+  background-color: #FFF;
   color: #FFF;
   text-align: center;
-  height:100vh;
   padding-top: 50px;
 }
 
 #hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 40px;}
 
-#hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 150px;}
-#hello h3 {font-size: 30px; font-weight: 300; line-height: 48px; margin:0; margin-top: 20px;}
+#hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 50px;}
+#hello h3 {font-size: 30px; font-weight: 300; line-height: 48px; margin:0; margin-top: 10px;}
 
 #hello a {color: #FFF}
 #hello a:hover {color: #556270}
@@ -39,6 +37,7 @@ body {
   width: 50%;
   overflow: hidden;
   margin-top: 50px;
+  min-width: 800px;
 }
 
 .left {
@@ -65,7 +64,7 @@ body {
   text-align: center;
   align-items: center;
   height: 400px;
-  padding-top: 150px;
+  padding:top 20px;
 }
 
 #aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #556270}
@@ -83,6 +82,9 @@ body {
   padding-top: 50px;
   height: 100vh;
   margin-top: 100px;
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari */
+  transform: rotate(20deg);
 }
 
 #portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #FFF;}
@@ -93,18 +95,29 @@ body {
 #portfolio a:hover {color: #556270}
 
 .showFirst {
+  background-color: rgba(0, 0, 0, 0.8);
   animation-name: showFirst;
   animation-iteration-count: 1;
   animation-duration: 1s;
 }
 
 .showSecond {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
   animation-name: showLater;
   animation-iteration-count: 1;
   animation-duration: 2s;
 }
 
 .showThird {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation-name: showLater;
+  animation-iteration-count: 1;
+  animation-duration: 4s;
+}
+
+.showThirdNoBackground {
   animation-name: showLater;
   animation-iteration-count: 1;
   animation-duration: 4s;
