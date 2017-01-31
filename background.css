@@ -18,13 +18,15 @@ body {
 }
 
 #hello {
-  background-color: rgba(0, 0, 0, 0.8);
+/*  background-color: rgba(0, 0, 0, 0.8);*/
   color: #FFF;
+  background: url('images/topimage.jpg') center / cover;
   text-align: center;
   padding-top: 50px;
+  height: 100vh;
 }
 
-#hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 40px;}
+#hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 20vh;}
 
 #hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 50px;}
 #hello h3 {font-size: 30px; font-weight: 300; line-height: 24px; margin:0; margin-bottom: 20px;}
@@ -77,16 +79,15 @@ body {
   color: #FFF;
   text-align: center;
   align-items: center;
-  height: 500px;
+  height: 100vh;
   margin-bottom: 50px;
-  margin-top: 50px;
 }
 
-#aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #556270}
+#aboutMe h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #373737;  margin-top: 100px;}
 
-#aboutMe p {font-size: 25px; font-weight: 300; margin: 0; color: #556270}
+#aboutMe p {font-size: 25px; font-weight: 300; margin: 0; color: #373737}
 
-#aboutMe a {color: #556270}
+#aboutMe a {color: #373737}
 #aboutMe a:hover {color: #556270}
 
 #portfolio {
@@ -106,6 +107,23 @@ body {
 
 #portfolio a {color: #FFF}
 #portfolio a:hover {color: #556270}
+
+
+#contact {
+  background-color: #FFF;
+  color: #FFF;
+  text-align: center;
+  align-items: center;
+  height: 90vh;
+  margin-bottom: 50px;
+}
+
+#contact h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 0; color: #373737;  margin-top: 100px;}
+
+#contact p {font-size: 25px; font-weight: 300; margin: 0; color: #373737}
+
+#contact a {color: #373737}
+#contact a:hover {color: #556270}
 
 .showFirst {
   animation-name: showFirst;
@@ -137,7 +155,7 @@ body {
   background-color: #373737;
 }
 
-
+/*
 @keyframes showFirst {
     0% {opacity: 0}
 		100% {opacity: 1}
@@ -148,3 +166,4 @@ body {
     50% {opacity: 0}
 		100% {opacity: 1}
 }
+*/
