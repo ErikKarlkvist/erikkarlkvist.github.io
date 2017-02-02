@@ -19,8 +19,8 @@
               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
               if (target.length) {
                 $('html, body').animate({
-                  scrollTop: target.offset().top - 20
-                }, 1000);
+                  scrollTop: target.offset().top-150
+                }, 1500);
                 return false;
               }
             }
@@ -76,7 +76,7 @@
           </div>
          </div>
 
-         <div class ="project grey">
+         <div class ="project" id = "white">
            <h2 margin-top=20>Gym statistics app</h2>
            <div class="wrapper">
              <div class = "left"> Image </div>
@@ -123,7 +123,6 @@
     <script>
       window.sr = ScrollReveal({ reset: true });
       sr.reveal('.about-me', { duration: 1200, rotate: {x: 65} });
-      sr.reveal('.start', { duration: 1200 });
       sr.reveal('.folio', { duration: 1200 });
       sr.reveal('.project', { duration: 1200 ,rotate: {y: 65}});
     </script>

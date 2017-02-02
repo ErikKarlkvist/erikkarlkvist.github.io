@@ -18,13 +18,14 @@ body {
 }
 
 #hello {
-  background-color: rgba(0, 0, 0, 0.8);
+  background: url('images/header.jpeg') center / cover;
   color: #FFF;
   text-align: center;
   padding-top: 50px;
+  height: 100vh;
 }
 
-#hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 40px;}
+#hello h1 {font-size: 156px; font-weight: 300; line-height: 156px; margin: 0; margin-top: 30vh;}
 
 #hello h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin:0; margin-top: 50px;}
 #hello h3 {font-size: 30px; font-weight: 300; line-height: 24px; margin:0; margin-bottom: 20px;}
@@ -50,6 +51,9 @@ body {
   background: url('images/profile.jpg') center / cover;
 }
 
+.project {
+  height: 100vh;
+}
 
 
 .wrapper {
@@ -86,11 +90,11 @@ body {
 
 #aboutMe p {font-size: 25px; font-weight: 300; margin: 0; color: #556270}
 
-#aboutMe a {color: #556270}
-#aboutMe a:hover {color: #556270}
+#aboutMe a {color: #373737}
+#aboutMe a:hover {color: #373737}
 
 #portfolio {
-  background-color: #C44D58;
+  background-color: #373737;
   color: #FFF;
   text-align: center;
   align-items: center;
@@ -100,12 +104,12 @@ body {
 }
 
 #portfolio h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 20px; color: #FFF;}
-#portfolio h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin-top: 50px; padding-top: 20px}
+#portfolio h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin-top: 50px; padding-top: 20px; color: #FFF;}
 
 #portfolio p {font-size: 20px; font-weight: 300; margin: 0; color: #FFF; margin-bottom: 20px;}
 
 #portfolio a {color: #FFF}
-#portfolio a:hover {color: #556270}
+#portfolio a:hover {color: #FFF}
 
 .showFirst {
   animation-name: showFirst;
@@ -133,11 +137,23 @@ body {
   animation-duration: 4s;
 }
 
-.grey {
-  background-color: #373737;
+#white {
+  background-color: #FFF;
 }
 
+#white h1 {font-size: 100px; font-weight: 300; line-height: 156px; margin: 20px; color: #FFF;}
+#white  h2 {font-size: 48px; font-weight: 300; line-height: 48px; margin-top: 50px; padding-top: 20px; color: #FFF;}
 
+#white  p {font-size: 20px; font-weight: 300; margin: 0; color: #FFF; margin-bottom: 20px;}
+
+#white  a {color: #FFF}
+#white  a:hover {color: #FFF}
+
+#contact {
+  height: 100vh;
+}
+
+/*
 @keyframes showFirst {
     0% {opacity: 0}
 		100% {opacity: 1}
@@ -148,3 +164,4 @@ body {
     50% {opacity: 0}
 		100% {opacity: 1}
 }
+*/
