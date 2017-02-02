@@ -19,7 +19,7 @@
               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
               if (target.length) {
                 $('html, body').animate({
-                  scrollTop: target.offset().top-150
+                  scrollTop: target.offset().top
                 }, 1500);
                 return false;
               }
@@ -43,21 +43,23 @@
         </div>
       </div>
 
-    <div class = "about-me">
-      <div id ="aboutMe" class="showThirdNoBackground" >
-        <h1>About Me</h1>
-         <div class="center">
-           <div class="profile_image"></div>
-              <p>
-                I'm a 22 year old student currently studying Software Engineering at
-                Chalmers University of Technology in Gothenburg. I have a huge interest in software developement and I love working with new projects.
-              </p>
-          </div>
+    <div id = "aboutMe">
+      <div class = "about-me">
+          <h1>About Me</h1>
+           <div class="center">
+             <div class="profile_image"></div>
+                <p>
+                  My name is Erik Karlkvist. I'm a 22 year old student currently studying my third year in Software Engineering at
+                  Chalmers University of Technology in Gothenburg. I have a huge interest in software development and I love working with new <a href="#portfolio">projects</a>. I have
+                  educational experience in Java, Haskell, C and C# and worked part time in hardware repairment, replacement and diagnosis.
+                </p>
+                <p>
+                  If you are interested in my <a href="#portfolio">projects</a> or talents, you can contact me <a href="#contact">here</a>.
+                </p>
+            </div>
         </div>
       </div>
-    </div>
 
-    <div id="page">
       <div id ="portfolio" class="folio">
         <h1>Projects</h1>
 
@@ -76,25 +78,35 @@
           </div>
          </div>
 
-         <div class ="project" id = "white">
-           <h2 margin-top=20>Gym statistics app</h2>
-           <div class="wrapper">
-             <div class = "left"> Image </div>
-             <div class = "right">
-               <p>
-                 In order to motivate myself to exercise more I created a simple android app that saves my gym statistics. My goal is to be able to share and use the application together with mygym partner.
-               </p>
+         <div class= "grey">
+           <div class ="project">
+             <h2 margin-top=20>Gym statistics app</h2>
+             <div class="wrapper">
+               <div class = "left"> <img src="images/gym_app.png" style="width:40vh;height:80vh;"> </div>
+               <div class = "right">
+                 <p>
+                   In order to motivate myself to exercise more I created a simple android app that saves my gym statistics. My goal is to be able to share and use the application together with my gym partner.
+                 </p>
+                 <p>
+                   The app is on android and is built using Android Studios with Java and XML.
+                 </p>
+               </div>
              </div>
-           </div>
+            </div>
           </div>
 
           <div class ="project">
-            <h2 margin-top=20>Electricity Innovation Challenge</h2>
+            <h2 margin-top=20>EcoTravel</h2>
             <div class="wrapper">
-              <div class = "left"> Image</div>
+              <div class = "left"> <img src="images/company.png" style="width:40vh;height:80vh;"> </div>
               <div class = "right">
                 <p>
-                  Text here
+                  This app was developed during the electricity innovation challenge. It calculates how much carbon dioxide the user saves by taking the eletric bus in Gothenburg
+                  instead of taking a car. It also puts the result in a scoreboard, creating a competing element where the most environmentally friendly person is on top of the scoreboard.
+                </p>
+                <p>
+                  A big part of the application is the ability to create and join your company and togheter get a good score. Our goal was to create a natural place for companies
+                  to challenge each other and show others how good they are at being environmentally friendly.
                 </p>
               </div>
             </div>
@@ -105,25 +117,32 @@
     </div>
 
     <div id="page">
-      <div id ="aboutMe" class="about-me" >
-        <div id ="contact" class="about-me" >
-          <h1>Contact</h1>
-            <div class="wrapper">
-               <p>
-                 List contact info here
-               </p>
-             </div>
+      <div id ="contact" class="about-me" >
+        <h1>Contact</h1>
+          <div class="wrapper">
+             <p>
+               If you want to contact me, please send me an email!
+             </p>
+             <p>
+                <br>
+                <a href="mailto:erikkarlkvist95@gmail.com">erikkarlkvist95@gmail.com</a>
+              </p>
            </div>
-         </div>
-        </div>
+      </div>
+
+      <div id = "footer">
+        <p>
+          <a href="#hello">Back to top</a> <a href="#aboutMe">About Me</a> <a href="#portfolio">Projects</a> <a href="#contact">Contact</a> <a href="https://github.com/ErikKarlkvist">Github</a> <a href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=hp-identity-name">LinkedIn</a>
+        </p>
       </div>
     </div>
+
 
 
     <script>
       window.sr = ScrollReveal({ reset: true });
       sr.reveal('.about-me', { duration: 1200, rotate: {x: 65} });
-      sr.reveal('.folio', { duration: 1200 });
+      sr.reveal('.start', { duration: 1200 });
       sr.reveal('.project', { duration: 1200 ,rotate: {y: 65}});
     </script>
 
