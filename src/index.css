@@ -1,30 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --animate-gradient: gradient 8s linear infinite;
+  --animate-fade-in: fade-in 1s ease-out forwards;
 
-  @keyframes gradient {
-
-    0%,
-    100% {
-      background-size: 200% 200%;
-      background-position: left center;
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
     }
 
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
+    100% {
+      opacity: 1;
+      filter: blur(0);
     }
   }
 }
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color-scheme: dark light;
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  @apply bg-neutral-950;
 }
