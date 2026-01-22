@@ -1,8 +1,8 @@
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-950 flex flex-col items-center justify-center p-4 text-center selection:bg-neutral-800 selection:text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center selection:bg-neutral-800 selection:text-white">
       <main className="space-y-6 animate-fade-in">
-        <h1 className="text-3xl md:text-4xl font-light text-neutral-100 tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-light text-neutral-950 tracking-tight">
           karlkvist.se
         </h1>
 
