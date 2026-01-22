@@ -1,149 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Custome css -->
-    <link rel="stylesheet" type="text/css" href="background.css">
-    <!-- MDL-->
-    <link rel="stylesheet" href="mdl/material.min.css">
+<!doctype html>
+<html lang="sv">
 
-    <!--Scroll reveal script -->
-    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eriks hemsida. Under kontruktion</title>
+</head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-    <script>
-      $(function() {
-          $('a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-              var target = $(this.hash);
-              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-              if (target.length) {
-                $('html, body').animate({
-                  scrollTop: target.offset().top
-                }, 1500);
-                return false;
-              }
-            }
-          });
-      });
-    </script>
-
-  </head>
-  <body>
-    <div id="page">
-      <div id = "hello" class="start">
-        <div class="showFirst">
-            <h1>Hello</h1>
-        </div>
-        <div class="showSecond">
-            <h2>I am <a href="#aboutMe"> Erik Karlkvist</a></h2>
-        </div>
-        <div class="showThird">
-            <h3>View my <a href="#portfolio">projects</a> or <a href="#contact">contact</a> me.</h3>
-        </div>
-      </div>
-
-    <div id = "aboutMe">
-      <div class = "about-me">
-          <h1>About Me</h1>
-           <div class="center">
-             <div class="profile_image"></div>
-                <p>
-                  My name is Erik Karlkvist. I'm a 22 year old student currently studying my third year in Software Engineering at
-                  Chalmers University of Technology in Gothenburg. I have a huge interest in software development and I love working with new <a href="#portfolio">projects</a>. I have
-                  educational experience in Java, Haskell, C and C# and worked part time in hardware repairment, replacement and diagnosis.
-                </p>
-                <p>
-                  If you are interested in my <a href="#portfolio">projects</a> or talents, you can contact me <a href="#contact">here</a>.
-                </p>
-            </div>
-        </div>
-      </div>
-
-      <div id ="portfolio" class="folio">
-        <h1>Projects</h1>
-
-        <div class ="project">
-          <h2 margin-top=20>Snake in Haskell</h2>
-          <div class="wrapper">
-            <div class = "left"> <div id ="noscroll"><object  type="text/html" data="MainHaste.html" width="500px" height="450px"></object></div> </div>
-            <div class = "right">
-              <p>
-                In the functional programming course me and Emil Axelsson created this snake game. It uses haste to create the HTML elements and the snake runs in haskell.
-              </p>
-              <p>
-                <b>Run the game by clicking on it and then push any arrow key to move. This only works on desktop computers.</b>
-              </p>
-            </div>
-          </div>
-         </div>
-
-         <div class= "grey">
-           <div class ="project">
-             <h2 margin-top=20>Gym statistics app</h2>
-             <div class="wrapper">
-               <div class = "left"> <img src="images/gym_app.png" style="width:30vh;height:60vh;"> </div>
-               <div class = "right">
-                 <p>
-                   In order to motivate myself to exercise more I created a simple android app that saves my gym statistics. My goal is to be able to share and use the application together with my gym partner.
-                 </p>
-                 <p>
-                   The app is on android and is built using Android Studios with Java and XML.
-                 </p>
-               </div>
-             </div>
-            </div>
-          </div>
-
-          <div class ="project">
-            <h2 margin-top=20>EcoTravel</h2>
-            <div class="wrapper">
-              <div class = "left"> <img src="images/company.png"  style="width:30vh;height:60vh;"> </div>
-              <div class = "right">
-                <p>
-                  This app was developed during the electricity innovation challenge. It calculates how much carbon dioxide the user saves by taking the eletric bus in Gothenburg
-                  instead of taking a car. It also puts the result in a scoreboard, creating a competing element where the most environmentally friendly person is on top of the scoreboard.
-                </p>
-                <p>
-                  A big part of the application is the ability to create and join your company and togheter get a good score. Our goal was to create a natural place for companies
-                  to challenge each other and show others how good they are at being environmentally friendly.
-                </p>
-              </div>
-            </div>
-           </div>
-
-       </div>
-      </div>
-    </div>
-
-    <div id="page">
-      <div id ="contact" class="about-me" >
-        <h1>Contact</h1>
-          <div class="wrapper">
-             <p>
-               If you want to contact me, please send me an email!
-             </p>
-             <p>
-                <br>
-                <a href="mailto:erikkarlkvist95@gmail.com">erikkarlkvist95@gmail.com</a>
-              </p>
-           </div>
-      </div>
-
-      <div id = "footer">
-        <p>
-          <a href="#hello">Back to top</a> <a href="#aboutMe">About Me</a> <a href="#portfolio">Projects</a> <a href="#contact">Contact</a> <a href="https://github.com/ErikKarlkvist">Github</a> <a href="https://www.linkedin.com/in/erik-karlkvist-16329b114?trk=hp-identity-name">LinkedIn</a>
-        </p>
-      </div>
-    </div>
-
-
-
-    <script>
-      window.sr = ScrollReveal({ reset: true });
-      sr.reveal('.about-me', { duration: 1200, rotate: {x: 65} });
-      sr.reveal('.start', { duration: 1200 });
-      sr.reveal('.project', { duration: 1200 ,rotate: {y: 65}});
-    </script>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
 
 </html>
