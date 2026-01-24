@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Button } from './Button/Button';
 import { Input } from './Input/Input';
 import { Form } from './Form/Form';
-import { Heading } from './Typography/Heading';
-import { Text } from './Typography/Text';
 import { Select } from './Select/Select';
 import { Radio } from './Radio/Radio';
 import { Checkbox } from './Checkbox/Checkbox';
@@ -11,9 +9,9 @@ import { Toggle } from './Toggle/Toggle';
 import { Badge } from './Badge/Badge';
 import { Card } from './Card/Card';
 
-export const MinimalisticDemo = () => {
+export const ModernDemo = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [version, setVersion] = useState<'sharp' | 'rounded' | 'soft'>('sharp');
+    const [version, setVersion] = useState<'clean' | 'soft' | 'dynamic'>('clean');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,33 +20,46 @@ export const MinimalisticDemo = () => {
     };
 
     const versions = [
-        { id: 'sharp', label: 'Sharp' },
-        { id: 'rounded', label: 'Rounded' },
+        { id: 'clean', label: 'Clean' },
         { id: 'soft', label: 'Soft' },
+        { id: 'dynamic', label: 'Dynamic' },
     ] as const;
 
+    const getBackground = () => {
+        switch (version) {
+            case 'soft':
+                return 'bg-gradient-to-br from-stone-50 to-orange-50';
+            case 'dynamic':
+                return 'bg-stone-50';
+            default: // clean
+                return 'bg-white';
+        }
+    };
+
     return (
-        <div className="w-full h-full flex flex-col p-6 relative bg-neutral-50 overflow-y-auto">
+        <div className={`w-full h-full flex flex-col p-6 relative transition-colors duration-500 overflow-y-auto ${getBackground()}`}>
             {/* Header Area */}
             <div className="flex flex-col md:flex-row justify-between items-center mb-10 mt-12 px-4 max-w-6xl mx-auto w-full">
                 <div className="text-center md:text-left mb-6 md:mb-0">
-                    <Heading variant="display">Minimalism</Heading>
-                    <Text variant="body" className="max-w-md text-neutral-500 mt-2">
-                        Less is more. A focus on typography, spacing, and contrast.
-                    </Text>
+                    <h2 className="text-3xl font-bold text-stone-900 mb-2 tracking-tight">
+                        Modern Living
+                    </h2>
+                    <p className="text-stone-500 max-w-md">
+                        Warm, earthy, and sophisticated. A design system crafted for premium furniture and interior brands.
+                    </p>
                 </div>
 
                 {/* Version Switcher */}
-                <div className="inline-flex bg-white border border-neutral-200 p-1 gap-1">
+                <div className="inline-flex bg-white border border-stone-200 p-1 gap-1 rounded-lg shadow-sm">
                     {versions.map((v) => (
                         <button
                             key={v.id}
                             onClick={() => setVersion(v.id)}
                             className={`
-                                px-4 py-2 text-xs uppercase tracking-wider transition-all duration-300
+                                px-4 py-2 text-xs font-medium rounded-md transition-all duration-200
                                 ${version === v.id
-                                    ? 'bg-neutral-900 text-white'
-                                    : 'text-neutral-500 hover:text-neutral-900'
+                                    ? 'bg-stone-800 text-white shadow-md'
+                                    : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900'
                                 }
                             `}
                         >
@@ -64,7 +75,7 @@ export const MinimalisticDemo = () => {
                 {/* Left Column: Form & Inputs */}
                 <div className="lg:col-span-4 space-y-8">
                     <Form title="Checkout" onSubmit={handleSubmit} version={version}>
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             <Input
                                 label="Email Address"
                                 type="email"
@@ -75,43 +86,43 @@ export const MinimalisticDemo = () => {
                             <Select
                                 label="Shipping Method"
                                 options={[
-                                    { value: 'standard', label: 'Standard Delivery' },
-                                    { value: 'express', label: 'Express Delivery' },
+                                    { value: 'standard', label: 'Standard Delivery (3-5 days)' },
+                                    { value: 'express', label: 'Express Delivery (1-2 days)' },
                                 ]}
                                 version={version}
                             />
                             <div className="pt-2 space-y-3">
-                                <Text variant="label">Payment</Text>
-                                <div className="flex gap-6">
-                                    <Radio id="card-min" name="payment-min" label="Card" defaultChecked version={version} />
-                                    <Radio id="paypal-min" name="payment-min" label="PayPal" version={version} />
+                                <label className="block text-sm font-medium text-stone-900">Payment</label>
+                                <div className="flex gap-4">
+                                    <Radio id="card" name="payment" label="Card" defaultChecked version={version} />
+                                    <Radio id="paypal" name="payment" label="PayPal" version={version} />
                                 </div>
                             </div>
                             <div className="pt-2">
-                                <Checkbox id="terms-min" label="I agree to terms" version={version} />
+                                <Checkbox id="terms" label="I agree to terms" version={version} />
                             </div>
                         </div>
-                        <div className="pt-6 flex gap-4">
+                        <div className="pt-4 flex gap-3">
                             <Button variant="secondary" type="button" className="flex-1" version={version}>
                                 Cancel
                             </Button>
-                            <Button type="submit" variant="primary" isLoading={isLoading} loadingText="Wait..." version={version} className="flex-1">
+                            <Button type="submit" variant="primary" isLoading={isLoading} loadingText="Processing..." version={version} className="flex-1">
                                 Pay Now
                             </Button>
                         </div>
                     </Form>
 
                     {/* Settings Panel */}
-                    <div className={`p-8 border border-neutral-200 bg-white ${version === 'rounded' ? 'rounded-lg' : (version === 'soft' ? 'rounded-2xl' : '')}`}>
-                        <Text variant="label" className="mb-6 block">Preferences</Text>
-                        <div className="space-y-6">
+                    <div className={`p-6 rounded-lg border ${version === 'clean' ? 'bg-white border-stone-200' : 'bg-white/50 border-white/50 shadow-sm'}`}>
+                        <h3 className="text-sm font-bold text-stone-400 uppercase tracking-wider mb-4">Preferences</h3>
+                        <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-neutral-900">Notifications</span>
-                                <Toggle id="notif-min" defaultChecked version={version} />
+                                <span className="text-sm font-medium text-stone-700">Notifications</span>
+                                <Toggle id="notif" defaultChecked version={version} />
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-neutral-900">Dark Mode</span>
-                                <Toggle id="dark-min" version={version} />
+                                <span className="text-sm font-medium text-stone-700">Dark Mode</span>
+                                <Toggle id="dark" version={version} />
                             </div>
                         </div>
                     </div>
@@ -119,37 +130,32 @@ export const MinimalisticDemo = () => {
 
                 {/* Right Column: Collection & Card */}
                 <div className="lg:col-span-8 space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Product Card */}
                         <div className="flex justify-center">
                             <Card
                                 image="/chair.webp"
-                                title="Lounge Chair"
+                                title="Eames Lounge Chair"
                                 price="$799.00"
                                 version={version}
                             />
                         </div>
 
                         {/* Component Showcase */}
-                        <div className="space-y-8">
-                            <div className={`
-                                p-8 h-full border border-neutral-200 bg-white flex flex-col justify-center gap-8
-                                ${version === 'rounded' ? 'rounded-lg' : (version === 'soft' ? 'rounded-2xl' : '')}
-                            `}>
+                        <div className="space-y-6">
+                            <div className={`p-6 rounded-lg h-full border flex flex-col justify-center gap-6 ${version === 'clean' ? 'bg-white border-stone-200' : 'bg-stone-800 border-stone-700 text-white'}`}>
                                 <div>
-                                    <Heading variant="section">New Arrivals</Heading>
-                                    <Text variant="body" className="mt-2 text-neutral-500">
-                                        Timeless design. Sustainable materials.
-                                    </Text>
-                                    <div className="flex gap-2 mt-6">
-                                        <Badge variant="inverse" version={version}>New</Badge>
-                                        <Badge variant="outline" version={version}>In Stock</Badge>
+                                    <h3 className={`text-xl font-bold mb-2 ${version === 'clean' ? 'text-stone-900' : 'text-white'}`}>New Arrivals</h3>
+                                    <p className={`text-sm mb-6 ${version === 'clean' ? 'text-stone-500' : 'text-stone-400'}`}>Check out our latest collection of mid-century modern furniture.</p>
+                                    <div className="flex gap-2">
+                                        <Badge variant="accent" version={version}>New</Badge>
+                                        <Badge variant="success" version={version}>In Stock</Badge>
                                         <Badge variant="neutral" version={version}>Limited</Badge>
                                     </div>
                                 </div>
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     <Button variant="primary" className="w-full" version={version}>View Collection</Button>
-                                    <Button variant="secondary" className="w-full" version={version}>Download Catalog</Button>
+                                    <Button variant="secondary" className={`w-full ${version !== 'clean' ? '!bg-transparent !text-white !border-stone-600 hover:!bg-stone-700' : ''}`} version={version}>Download Catalog</Button>
                                 </div>
                             </div>
                         </div>

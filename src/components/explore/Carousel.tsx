@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IconButton as MinimalisticIconButton } from './minimalistic/IconButton/IconButton';
-import { IconButton as FuturisticIconButton } from './futuristic/IconButton/IconButton';
+import { IconButton as ModernIconButton } from './modern/IconButton/IconButton';
 import { IconButton as ColorfulIconButton } from './colorful/IconButton/IconButton';
 
 // Simple SVG replacements
@@ -11,7 +11,7 @@ const ChevronRightIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m9 18 6-6-6-6" /></svg>
 );
 
-type ThemeType = 'minimalistic' | 'futuristic' | 'colorful';
+type ThemeType = 'minimalistic' | 'modern' | 'colorful';
 
 interface CarouselProps {
     items: {
@@ -56,15 +56,13 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
     }, [isTransitioning]);
 
     const renderNavButtons = () => {
-
-
         const NavButton = ({ onClick, direction }: { onClick: () => void, direction: 'left' | 'right' }) => {
             const Icon = direction === 'left' ? ChevronLeftIcon : ChevronRightIcon;
 
             if (currentItem.theme === 'minimalistic') {
                 return <MinimalisticIconButton onClick={onClick}><Icon className="w-6 h-6" /></MinimalisticIconButton>
-            } else if (currentItem.theme === 'futuristic') {
-                return <FuturisticIconButton onClick={onClick}><Icon className="w-6 h-6" /></FuturisticIconButton>
+            } else if (currentItem.theme === 'modern') {
+                return <ModernIconButton onClick={onClick}><Icon className="w-6 h-6" /></ModernIconButton>
             } else {
                 return <ColorfulIconButton onClick={onClick}><Icon className="w-6 h-6" /></ColorfulIconButton>
             }
@@ -104,7 +102,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
                             h-1.5 rounded-full transition-all duration-300 
                             ${idx === currentIndex ? 'w-8' : 'w-1.5'}
                             ${currentItem.theme === 'minimalistic' ? (idx === currentIndex ? 'bg-neutral-900' : 'bg-neutral-300') : ''}
-                            ${currentItem.theme === 'futuristic' ? (idx === currentIndex ? 'bg-cyan-400 shadow-[0_0_8px_#22d3ee]' : 'bg-cyan-900/50') : ''}
+                            ${currentItem.theme === 'modern' ? (idx === currentIndex ? 'bg-indigo-600' : 'bg-slate-300') : ''}
                             ${currentItem.theme === 'colorful' ? (idx === currentIndex ? 'bg-white' : 'bg-white/40') : ''}
                         `}
                     />
@@ -115,7 +113,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
             <div className={`
                 absolute top-4 left-4 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded z-50
                 ${currentItem.theme === 'minimalistic' ? 'text-neutral-900 bg-white border border-neutral-200 shadow-sm' : ''}
-                ${currentItem.theme === 'futuristic' ? 'text-cyan-400 bg-cyan-950/80 border border-cyan-500/30 backdrop-blur' : ''}
+                ${currentItem.theme === 'modern' ? 'text-indigo-600 bg-white/80 border border-indigo-100 shadow-sm backdrop-blur' : ''}
                 ${currentItem.theme === 'colorful' ? 'text-white bg-black/20 backdrop-blur border border-white/20' : ''}
             `}>
                 {currentItem.theme}

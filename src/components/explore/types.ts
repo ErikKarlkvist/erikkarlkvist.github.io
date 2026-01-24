@@ -20,3 +20,7 @@ export interface FormProps extends BaseProps {
     title?: string;
     onSubmit?: (e: React.FormEvent) => void;
 }
+
+export type MinimalisticVersion = 'sharp' | 'rounded' | 'soft';
+export type ColorfulVersion = 'soft' | 'vibrant' | 'outline';
+export type ModernVersion = 'clean' | 'soft' | 'dynamic';

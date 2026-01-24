@@ -1,6 +1,6 @@
 import { Carousel } from '../components/explore/Carousel';
 import { MinimalisticDemo } from '../components/explore/minimalistic/MinimalisticDemo';
-import { FuturisticDemo } from '../components/explore/futuristic/FuturisticDemo';
+import { ModernDemo } from '../components/explore/modern/ModernDemo';
 import { ColorfulDemo } from '../components/explore/colorful/ColorfulDemo';
 
 export default function ExploreComponents() {
@@ -11,9 +11,9 @@ export default function ExploreComponents() {
             component: <MinimalisticDemo />
         },
         {
-            id: 'futuristic',
-            theme: 'futuristic' as const,
-            component: <FuturisticDemo />
+            id: 'modern',
+            theme: 'modern' as const,
+            component: <ModernDemo />
         },
         {
             id: 'colorful',

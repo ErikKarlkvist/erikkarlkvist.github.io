@@ -3,19 +3,33 @@ import type { FormProps } from '../../types';
 import { theme } from '../theme';
 import { Heading } from '../Typography/Heading';
 
-type ColorfulFormProps = Omit<FormProps, 'className'>;
+interface ColorfulFormProps extends Omit<FormProps, 'className'> {
+    version?: 'soft' | 'vibrant' | 'outline';
+}
 
 export const Form: React.FC<ColorfulFormProps> = ({
     children,
     title,
     onSubmit,
+    version = 'soft',
 }) => {
     const { colors, spacing } = theme;
+
+    const getVersionStyles = () => {
+        switch (version) {
+            case 'vibrant':
+                return `bg-white shadow-xl shadow-orange-500/10 border-orange-100`;
+            case 'outline':
+                return `bg-white/50 border-slate-200 backdrop-blur-sm`;
+            default: // soft
+                return `${colors.bg.surface} ${colors.shadow.card} ${colors.border.default}`;
+        }
+    };
 
     return (
         <form
             onSubmit={onSubmit}
-            className={`w-full max-w-md ${spacing.padding.card} ${colors.bg.surface} ${spacing.radius.card} ${colors.shadow.card} border ${colors.border.default}`}
+            className={`w-full max-w-md ${spacing.padding.card} ${spacing.radius.card} border transition-all duration-500 ${getVersionStyles()}`}
         >
             {title && (
                 <div className="mb-8 text-center">
