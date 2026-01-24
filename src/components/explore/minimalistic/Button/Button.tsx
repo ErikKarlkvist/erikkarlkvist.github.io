@@ -38,7 +38,13 @@ export const Button: React.FC<MinimalisticButtonProps> = ({
 
     return (
         <button
-            className={`${baseStyles} ${variants[variant]} disabled:opacity-50`}
+            className={`
+                ${baseStyles}
+                ${variants[variant]}
+                ${fullWidth ? 'w-full' : ''}
+                ${className}
+                disabled:opacity-50
+            `}
             disabled={isLoading || props.disabled}
             {...props}
         >

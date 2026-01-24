@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import { Badge } from '../Badge/Badge';
-import { theme } from '../theme';
 
 interface MinimalisticCardProps {
     image: string;

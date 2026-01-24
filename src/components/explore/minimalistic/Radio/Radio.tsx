@@ -7,7 +7,7 @@ interface MinimalisticRadioProps extends React.InputHTMLAttributes<HTMLInputElem
 
 export const Radio: React.FC<MinimalisticRadioProps> = ({
     label,
-    version = 'sharp',
+    // version = 'sharp',
     className = '',
     id,
     ...props

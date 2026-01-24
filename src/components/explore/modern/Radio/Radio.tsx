@@ -8,7 +8,7 @@ interface ModernRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Radio: React.FC<ModernRadioProps> = ({
     label,
-    version = 'clean',
+    // version = 'clean',
     className = '',
     id,
     ...props

@@ -7,7 +7,7 @@ interface ModernToggleProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 export const Toggle: React.FC<ModernToggleProps> = ({
     label,
-    version = 'clean',
+    // version = 'clean',
     className = '',
     checked,
     id,
@@ -29,7 +29,7 @@ export const Toggle: React.FC<ModernToggleProps> = ({
                     peer-checked:after:translate-x-full peer-checked:after:border-white 
                     after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
                     after:bg-white after:border-gray-300 after:border after:rounded-full 
-                    after:h-5 after:w-5 after:transition-all
+                    after:h-5 after:w-5 after:transition-all 
                     peer-checked:bg-orange-600
                 `}></div>
             </div>

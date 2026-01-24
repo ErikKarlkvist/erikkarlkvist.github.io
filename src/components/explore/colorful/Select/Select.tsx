@@ -17,7 +17,7 @@ export const Select: React.FC<ColorfulSelectProps> = ({
     id,
     ...props
 }) => {
-    const { colors, spacing } = theme;
+    const { spacing } = theme;
 
     const getStyles = () => {
         const base = `w-full ${spacing.padding.input} ${spacing.radius.input} transition-all duration-300 outline-none block appearance-none bg-no-repeat bg-[right_1rem_center]`;

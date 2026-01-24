@@ -7,7 +7,7 @@ interface ColorfulCheckboxProps extends React.InputHTMLAttributes<HTMLInputEleme
 
 export const Checkbox: React.FC<ColorfulCheckboxProps> = ({
     label,
-    version = 'soft',
+    // version = 'soft',
     className = '',
     id,
     ...props

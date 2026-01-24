@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { theme } from './theme';
 import { Button } from './Button/Button';
 import { Input } from './Input/Input';
 import { Form } from './Form/Form';
@@ -13,7 +12,6 @@ import { Card } from './Card/Card';
 export const ColorfulDemo = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [version, setVersion] = useState<'soft' | 'vibrant' | 'outline'>('outline');
-    const { colors } = theme;
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

@@ -7,7 +7,7 @@ interface ColorfulRadioProps extends React.InputHTMLAttributes<HTMLInputElement>
 
 export const Radio: React.FC<ColorfulRadioProps> = ({
     label,
-    version = 'soft',
+    // version = 'soft',
     className = '',
     id,
     ...props

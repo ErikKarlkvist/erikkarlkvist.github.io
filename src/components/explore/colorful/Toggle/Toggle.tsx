@@ -7,7 +7,7 @@ interface ColorfulToggleProps extends React.InputHTMLAttributes<HTMLInputElement
 
 export const Toggle: React.FC<ColorfulToggleProps> = ({
     label,
-    version = 'soft',
+    // version = 'soft',
     className = '',
     checked,
     id,

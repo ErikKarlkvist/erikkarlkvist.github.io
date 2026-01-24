@@ -25,23 +25,23 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    const next = () => {
+    const next = React.useCallback(() => {
         if (isTransitioning) return;
         setIsTransitioning(true);
         setTimeout(() => {
             setCurrentIndex((prev) => (prev + 1) % items.length);
             setIsTransitioning(false);
         }, 500);
-    };
+    }, [isTransitioning, items.length]);
 
-    const prev = () => {
+    const prev = React.useCallback(() => {
         if (isTransitioning) return;
         setIsTransitioning(true);
         setTimeout(() => {
             setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
             setIsTransitioning(false);
         }, 500);
-    };
+    }, [isTransitioning, items.length]);
 
     const currentItem = items[currentIndex];
 
@@ -53,7 +53,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [isTransitioning]);
+    }, [next, prev]);
 
     const renderNavButtons = () => {
         const NavButton = ({ onClick, direction }: { onClick: () => void, direction: 'left' | 'right' }) => {

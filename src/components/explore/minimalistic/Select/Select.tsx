@@ -1,5 +1,4 @@
 import React from 'react';
-import { theme } from '../theme';
 
 interface MinimalisticSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     label?: string;
@@ -17,7 +16,6 @@ export const Select: React.FC<MinimalisticSelectProps> = ({
     id,
     ...props
 }) => {
-    const { spacing } = theme;
 
     const getStyles = () => {
         // More padding (py-3 px-4), cleaner border (1px instead of 2px)
