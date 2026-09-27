@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&amp;family=Rethink+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script type="module" src="./image-slot.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#fff3d6"></rect><text x="50" y="62" text-anchor="middle" font-family="serif" font-size="34" fill="#1a0089">E&amp;E</text></svg></template>
+<style>
+body{margin:0}
+a{color:inherit}
+a:hover{opacity:0.75}
+input,textarea,button{font-family:'Rethink Sans',sans-serif}
+@keyframes sway{
+0%{transform:skewX(0deg) rotate(0deg)}
+18%{transform:skewX(1.6deg) rotate(0.4deg)}
+34%{transform:skewX(-0.6deg) rotate(-0.2deg)}
+52%{transform:skewX(2.2deg) rotate(0.6deg)}
+70%{transform:skewX(0.3deg) rotate(0.1deg)}
+86%{transform:skewX(-1.2deg) rotate(-0.3deg)}
+100%{transform:skewX(0deg) rotate(0deg)}
+}
+@keyframes windup{
+0%{transform:rotate(0deg) translateX(0) scaleY(1)}
+100%{transform:rotate(6deg) translateX(10px) scaleY(1.03)}
+}
+@keyframes toot{
+0%{transform:translate(0,0) rotate(-4deg) scale(0.55);opacity:0}
+12%{opacity:1}
+70%{opacity:0.9}
+100%{transform:translate(-150px,-44px) rotate(-14deg) scale(1.15);opacity:0}
+}
+</style>
+</helmet>
+
+<div style="--ink:#1a0089;--bg:#fff3d6;font-family:'Rethink Sans',sans-serif;background:var(--bg);color:var(--ink);box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 10px 40px">
+<div style="--w:min(460px, calc(100vw - 20px));position:relative;width:var(--w);min-height:calc(var(--w) * 1.46);box-sizing:border-box;padding:calc(var(--w) * 0.13) calc(var(--w) * 0.11) calc(var(--w) * 0.17);display:flex;flex-direction:column">
+<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column">
+<div style="height:calc(var(--w) * 0.547);background:url('./ram-top.png') top center / 100% 100% no-repeat"></div>
+<div style="flex:1;background:url('./ram-mid.png') center / 100% 100% no-repeat"></div>
+<div style="height:calc(var(--w) * 0.122);background:url('./ram-bot.png') bottom center / 100% 100% no-repeat"></div>
+</div>
+<div style="position:relative;width:100%;display:flex;flex-direction:column;align-items:center">
+
+<sc-if value="{{ isName }}" hint-placeholder-val="{{ true }}">
+<div style="width:100%;display:flex;flex-direction:column;align-items:center;text-align:center">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="wind">
+<feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="2" seed="7" result="n">
+<animate attributeName="baseFrequency" dur="7s" values="0.006 0.014;0.011 0.02;0.006 0.014" repeatCount="indefinite"></animate>
+</feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="8" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+</filter>
+</defs></svg>
+<div style="position:relative;width:86%;aspect-ratio:999/563;margin-top:calc(var(--w) * 0.03);transition:opacity .6s ease;opacity:{{ artOpacity }}">
+<div style="width:100%;height:100%;transform-origin:70% 100%;transform:{{ leanTransform }};transition:{{ leanTransition }}">
+<div style="width:100%;height:100%;transform-origin:50% 100%;animation:{{ swayAnim }}">
+<img src="./gubbarna.png" alt="Två gubbar blåser i trumpet" style="width:100%;height:100%;display:block;object-fit:contain;filter:{{ artFilter }}">
+</div>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;opacity:{{ notesOpacity }}">
+<div style="position:absolute;left:6%;top:18%;font-size:34px;line-height:1;opacity:0;transform-origin:100% 50%;animation:{{ note1 }}">♪</div>
+<div style="position:absolute;left:6%;top:18%;font-size:27px;line-height:1;opacity:0;transform-origin:100% 50%;animation:{{ note2 }}">♫</div>
+<div style="position:absolute;left:6%;top:18%;font-family:'Homemade Apple',cursive;font-size:19px;line-height:1;white-space:nowrap;opacity:0;transform-origin:100% 50%;animation:{{ note3 }}">tuttelitut</div>
+<div style="position:absolute;left:0%;top:56%;font-size:30px;line-height:1;opacity:0;transform-origin:100% 50%;animation:{{ note4 }}">♫</div>
+<div style="position:absolute;left:0%;top:56%;font-size:24px;line-height:1;opacity:0;transform-origin:100% 50%;animation:{{ note5 }}">♬</div>
+<div style="position:absolute;left:0%;top:56%;font-family:'Homemade Apple',cursive;font-size:17px;line-height:1;white-space:nowrap;opacity:0;transform-origin:100% 50%;animation:{{ note6 }}">tuttelitut</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;margin-top:calc(var(--w) * 0.08);transition:opacity .5s ease,transform .5s ease;opacity:{{ copyOpacity }};transform:translateY({{ copyShift }})">
+<div style="font-size:12px;letter-spacing:2.5px;font-weight:500">BRÖLLOP</div>
+<div style="font-family:'Homemade Apple',cursive;font-size:clamp(34px,10.5vw,48px);line-height:1.45;margin-top:14px">Eli &amp; Erik</div>
+<div style="font-size:12px;letter-spacing:1.5px;font-weight:500;line-height:1.6;margin-top:8px;text-wrap:balance">5 JUNI 2027<br>NÄSINGE KYRKA &amp; FREDRIKSTEN FÄSTNING</div>
+</div>
+<div style="font-family:'Homemade Apple',cursive;font-size:26px;line-height:1.45;margin-top:34px;transition:opacity .5s ease,transform .5s ease;opacity:{{ copyOpacity }};transform:translateY({{ copyDown }})">Vad heter du?</div>
+<form onSubmit="{{ submitName }}" style="width:84%;margin-top:16px;display:flex;flex-direction:column;gap:16px;transition:opacity .5s ease,transform .5s ease;opacity:{{ copyOpacity }};transform:translateY({{ copyDown }});pointer-events:{{ copyPointer }}">
+<input type="text" required="true" placeholder="För- och efternamn" value="{{ nameInput }}" onChange="{{ onNameInput }}" style="border:none;border-bottom:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:18px;padding:10px 2px;outline:none;text-align:center">
+<button type="submit" style="background:var(--ink);color:var(--bg);border:none;font-size:12px;letter-spacing:2px;font-weight:600;padding:15px;border-radius:30px;cursor:pointer">{{ continueLabel }}</button>
+<sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:13px;line-height:1.6;text-align:center">{{ errorText }}</div>
+</sc-if>
+</form>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGreet }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;padding-top:calc(var(--w) * 0.14);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:26px;text-align:center;transition:opacity .6s ease,transform .6s ease;opacity:{{ greetOpacity }};transform:translateY({{ greetShift }})">
+<div style="font-family:'Homemade Apple',cursive;font-size:34px;line-height:1.45">{{ greetLine }}</div>
+<div style="font-size:16px;line-height:1.7;opacity:0.92">{{ askLine }}</div>
+<sc-if value="{{ hasPrevious }}" hint-placeholder-val="{{ false }}">
+<div style="border:1.5px solid var(--ink);border-radius:16px;padding:14px 18px;font-size:13px;line-height:1.6;opacity:0.85">{{ previousNote }}</div>
+</sc-if>
+<div style="display:flex;gap:14px;width:100%;margin-top:4px">
+<button onClick="{{ answerYes }}" style="flex:1;background:var(--ink);color:var(--bg);border:none;font-size:13px;letter-spacing:2px;font-weight:600;padding:17px;border-radius:30px;cursor:pointer">JA</button>
+<button onClick="{{ answerNo }}" style="flex:1;background:transparent;color:var(--ink);border:2px solid var(--ink);font-size:13px;letter-spacing:2px;font-weight:600;padding:15px;border-radius:30px;cursor:pointer">NEJ</button>
+</div>
+<button onClick="{{ backToName }}" style="background:none;border:none;color:var(--ink);opacity:0.6;font-size:12px;cursor:pointer;text-decoration:underline">Inte du? Byt namn</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isYes }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;padding-top:calc(var(--w) * 0.16);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px">
+
+<sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:20px;transition:opacity .28s ease;opacity:{{ qOpacity }}">
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">{{ qLabel }}</div>
+<div style="font-family:'Homemade Apple',cursive;font-size:30px;line-height:1.45">{{ qTitle }}</div>
+<div style="font-size:14.5px;line-height:1.7;opacity:0.9">{{ qMeta }}</div>
+
+<sc-if value="{{ qHasSlot }}" hint-placeholder-val="{{ true }}">
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<image-slot id="{{ qImgId }}" shape="rect" fit="cover" placeholder="{{ qImgText }}" style="width:100%;aspect-ratio:4/3"></image-slot>
+</div>
+</sc-if>
+<sc-if value="{{ qHasChurch }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<img src="./nasinge-kyrka.png" alt="Näsinge kyrka" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+</div>
+</sc-if>
+<sc-if value="{{ qHasTour }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<img src="./fastningen-gata.png" alt="Gata på Fredriksten fästning" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+</div>
+</sc-if>
+<sc-if value="{{ qHasPhoto }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<img src="./080623_pilgrimsleden_1774_www-vikenfotov-mrrip46n-014v.jpg" alt="Fredrikstens fästning" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover">
+</div>
+</sc-if>
+
+<sc-if value="{{ qShowPeople }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ people }}" as="p" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1.5px solid var(--ink);font-size:15.5px">{{ p.namn }}
+<div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
+<label style="display:flex;align-items:center;gap:7px;cursor:pointer"><span style="font-size:13px;font-weight:600;letter-spacing:2px;line-height:1">JA</span><input type="checkbox" checked="{{ p.checked }}" onChange="{{ p.toggle }}" style="width:21px;height:21px;margin:0;accent-color:var(--ink)"></label>
+<label style="display:flex;align-items:center;gap:7px;cursor:pointer"><span style="font-size:13px;font-weight:600;letter-spacing:2px;line-height:1">NEJ</span><input type="checkbox" checked="{{ p.checkedNo }}" onChange="{{ p.toggleNo }}" style="width:21px;height:21px;margin:0;accent-color:var(--ink)"></label>
+</div>
+</div>
+</sc-for>
+<div style="border-top:1.5px solid var(--ink)"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ qIsCar }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;font-size:15.5px">Vi kommer med bil
+<div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
+<label style="display:flex;align-items:center;gap:7px;cursor:pointer"><span style="font-size:13px;font-weight:600;letter-spacing:2px;line-height:1">JA</span><input type="checkbox" checked="{{ hasSeats }}" onChange="{{ toggleSeats }}" style="width:21px;height:21px;margin:0;accent-color:var(--ink)"></label>
+<label style="display:flex;align-items:center;gap:7px;cursor:pointer"><span style="font-size:13px;font-weight:600;letter-spacing:2px;line-height:1">NEJ</span><input type="checkbox" checked="{{ noCar }}" onChange="{{ toggleNoCar }}" style="width:21px;height:21px;margin:0;accent-color:var(--ink)"></label>
+</div>
+</div>
+
+</div>
+</sc-if>
+
+<div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+<button onClick="{{ goBack }}" style="background:transparent;color:var(--ink);border:2px solid var(--ink);font-size:12px;letter-spacing:2px;font-weight:600;padding:13px 20px;border-radius:30px;cursor:pointer">TILLBAKA</button>
+<button onClick="{{ goNext }}" style="flex:1;background:var(--ink);color:var(--bg);border:none;font-size:12px;letter-spacing:2px;font-weight:600;padding:15px;border-radius:30px;cursor:pointer">NÄSTA</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDetails }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:20px;transition:opacity .28s ease;opacity:{{ qOpacity }}">
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">{{ qLabel }}</div>
+<div style="font-family:'Homemade Apple',cursive;font-size:30px;line-height:1.45">Några sista detaljer</div>
+
+<sc-for list="{{ attendees }}" as="p" hint-placeholder-count="1">
+<label style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:500">{{ p.allergyLabel }}
+<input type="text" value="{{ p.allergier }}" onChange="{{ p.onAllergier }}" style="border:none;border-bottom:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:15px;padding:8px 2px;outline:none">
+</label>
+</sc-for>
+
+<label style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:500">Hälsning till oss
+<textarea rows="3" value="{{ message }}" onChange="{{ onMessage }}" style="border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:14px;padding:10px;outline:none;border-radius:8px;font-family:inherit;resize:vertical"></textarea>
+</label>
+
+<div style="display:flex;gap:12px;align-items:center;margin-top:4px">
+<button onClick="{{ goBack }}" style="background:transparent;color:var(--ink);border:2px solid var(--ink);font-size:12px;letter-spacing:2px;font-weight:600;padding:13px 20px;border-radius:30px;cursor:pointer">TILLBAKA</button>
+<button onClick="{{ submitYes }}" style="flex:1;background:var(--ink);color:var(--bg);border:none;font-size:12px;letter-spacing:2px;font-weight:600;padding:15px;border-radius:30px;cursor:pointer">{{ sendLabel }}</button>
+</div>
+<sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:12.5px;line-height:1.6;text-align:center">{{ errorText }}</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:30px;transition:opacity .5s ease;opacity:{{ doneOpacity }}">
+
+<div style="text-align:center;display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'Homemade Apple',cursive;font-size:34px;line-height:1.45">{{ doneTitle }}</div>
+<div style="font-size:14.5px;line-height:1.7;opacity:0.9">{{ doneNote }}</div>
+</div>
+
+<div style="border:2px solid var(--ink);border-radius:20px;padding:22px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">NI HAR TACKAT JA TILL</div>
+<sc-for list="{{ summary }}" as="row" hint-placeholder-count="2">
+<div style="font-size:14.5px;line-height:1.5"><b>{{ row.namn }}</b> — {{ row.text }}</div>
+</sc-for>
+<sc-if value="{{ hasSeats }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:14.5px;line-height:1.5;opacity:0.85">{{ seatsNote }}</div>
+</sc-if>
+</div>
+
+<div style="display:flex;flex-direction:column">
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7;margin-bottom:12px">HELA SCHEMAT</div>
+<sc-for list="{{ schedule }}" as="item" hint-placeholder-count="6">
+<div style="display:flex;gap:16px;align-items:baseline;padding:13px 0;border-top:1.5px solid var(--ink)">
+<div style="font-size:13px;font-weight:600;min-width:64px;letter-spacing:0.5px">{{ item.time }}</div>
+<div style="font-size:15px;line-height:1.45">{{ item.what }}</div>
+</div>
+</sc-for>
+<div style="border-top:1.5px solid var(--ink)"></div>
+</div>
+
+<div style="border:2px solid var(--ink);border-radius:20px;padding:22px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">BRA ATT HA</div>
+<div style="font-size:14px;line-height:1.65"><b>Boka hotell</b><br>Det är gångavstånd till samtliga hotell. Närmast ligger <a href="https://fredrikstenhotell.no/" style="text-decoration:underline" target="_blank" rel="noopener">Fredriksten Hotell</a>, direkt på fästningen.<br>Billigare alternativ är <a href="https://grandhotelhalden.no/" style="text-decoration:underline" target="_blank" rel="noopener">Grand Hotel Halden</a> och <a href="https://www.google.com/maps/search/?api=1&amp;query=Thon+Hotel+Halden+Langbrygga+1+1767+Halden" style="text-decoration:underline" target="_blank" rel="noopener">Thon Hotel Halden</a> – de ligger nedanför en brant backe.</div>
+<div style="font-size:14px;line-height:1.65"><b>Näsinge kyrka</b><br><a href="https://www.google.com/maps/search/?api=1&amp;query=N%C3%A4singe+kyrka" style="text-decoration:underline" target="_blank" rel="noopener">Visa på kartan</a></div>
+<div style="font-size:14px;line-height:1.65"><b>Fredriksten fästning</b><br><a href="https://www.google.com/maps/search/?api=1&amp;query=Fredriksten+festning+Halden" style="text-decoration:underline" target="_blank" rel="noopener">Visa på kartan</a></div>
+<div style="font-size:14px;line-height:1.65"><b>Present</b><br>Vill ni ge något till festen och bröllopsresan, swisha till 070-567 53 28.</div>
+</div>
+
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<img src="./uploads/PXL_20260903_133805352.TS-000.MP.jpg" alt="Erik och Eli" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:50% 62%">
+</div>
+
+<div style="text-align:center;font-size:12px;opacity:0.6;line-height:1.7">Frågor? Hör av dig till Erik på 070-567 53 28</div>
+</div>
+</sc-if>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isNo }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;padding-top:calc(var(--w) * 0.14);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:26px;text-align:center">
+<div style="font-family:'Homemade Apple',cursive;font-size:30px;line-height:1.45">Vi kommer sakna dig</div>
+<div style="font-size:15px;line-height:1.7;opacity:0.9">Tack för att du svarade. Hör gärna av dig ändå — vi ses snart på annat håll.</div>
+<div style="width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink)">
+<img src="./uploads/PXL_20260903_133805352.TS-000.MP.jpg" alt="Erik och Eli" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:50% 62%">
+</div>
+<button onClick="{{ backToGreet }}" style="background:none;border:none;color:var(--ink);opacity:0.6;font-size:12px;cursor:pointer;text-decoration:underline">Ändra svar</button>
+</div>
+</sc-if>
+
+</div>
+</div>
+
+<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--bg);padding:12px 18px;display:flex;gap:14px;align-items:center;justify-content:center;font-size:12px;letter-spacing:0.5px">
+<span>{{ answerCount }} svar sparade</span>
+<button onClick="{{ downloadCsv }}" style="background:var(--bg);color:var(--ink);border:none;padding:8px 16px;border-radius:20px;font-size:11px;letter-spacing:1.5px;font-weight:600;cursor:pointer">LADDA NER CSV</button>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:900},&quot;apiUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycbw2dRqYtiJ2z5r8px7EizSowXL0vMrPNHkvedupMsIRO-Y3IWvAK8mT-xLN4oMitt_qPA/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Backend&quot;,&quot;label&quot;:&quot;API-URL (Apps Script /exec)&quot;}}">
+const STORE = 'brollop-osa-svar';
+
+class Component extends DCLogic {
+  state = {
+    step: 'name', nameInput: '', guestName: '',
+    family: [], message: '',
+    qStep: 0, qOpacity: 1, doneOpacity: 0,
+    hasSeats: null, seats: 2, artIn: false, returning: false,
+    submitted: false, hasAnswered: false, isAdmin: false,
+    phase: 'idle', greetIn: false,
+    looking: false, sending: false, error: ''
+  };
+
+  timers = [];
+
+  get api() { return (this.props.apiUrl || '').trim(); }
+
+  componentWillUnmount() { this.timers.forEach(clearTimeout); }
+
+  componentDidMount() {
+    try { this.fanfare = new Audio('./uploads/freesound_community-success-fanfare-trumpets-6185.mp3'); this.fanfare.preload = 'auto'; this.fanfare.volume = 0.7; this.fanfare.load(); } catch (e) {}
+    if (/[?&]admin=1/.test(location.search) || location.hash === '#admin') this.setState({ isAdmin: true });
+  }
+
+  questions = [
+    { key: 'vigsel', title: 'Ska du på vigseln?', meta: 'Kl 11:00 · Näsinge kyrka · 5 juni 2027', imgId: '', imgText: '', church: true },
+    { key: 'rundvandring', title: 'Vill ni vara med på rundvandringen?', meta: 'Kl 16:00 · Guidad tur på Fredriksten fästning', imgId: '', imgText: '', tour: true },
+    { key: 'brollop', title: 'Ska ni på bröllopsmiddagen?', meta: 'Kl 18:00 · Middag och fest på fästningen', photo: true },
+    { key: 'kor_bil', title: 'Har ni bil?', meta: 'Vi samordnar skjuts till Halden och hör av oss direkt.', car: true }
+  ];
+
+  labels = { vigsel: 'vigseln', rundvandring: 'rundvandringen', brollop: 'bröllopsmiddagen' };
+
+  schedule = [
+    { time: '11:00', what: 'Vigsel i Näsinge kyrka' },
+    { time: '12:00', what: 'Lunch hos Elis föräldrar' },
+    { time: '13:00', what: 'Resa till Halden och incheckning' },
+    { time: '16:00', what: 'Guidad tur på Fredriksten fästning' },
+    { time: '17:00', what: 'Fördrink' },
+    { time: '18:00', what: 'Middag och fest' }
+  ];
+
+  testFamilies = {
+    'erik karlkvist': ['Erik Karlkvist', 'Eli Knoph'],
+    'eli knoph': ['Eli Knoph', 'Erik Karlkvist']
+  };
+
+  playFanfare() {
+    try {
+      if (!this.fanfare) {
+        this.fanfare = new Audio('./uploads/freesound_community-success-fanfare-trumpets-6185.mp3');
+        this.fanfare.volume = 0.7;
+      }
+      this.fanfare.currentTime = 0;
+      const p = this.fanfare.play();
+      if (p && p.catch) p.catch(() => {});
+    } catch (e) {}
+  }
+
+  runIntro() {
+    this.timers.forEach(clearTimeout);
+    const wait = Math.max(0, 750 - (Date.now() - (this.leanStart || 0)));
+    this.timers = [setTimeout(() => this.startIntro(), wait)];
+  }
+
+  startIntro() {
+    this.setState({ phase: 'fading', artIn: false });
+    this.timers = [
+      setTimeout(() => this.playFanfare(), 560),
+      setTimeout(() => this.setState({ phase: 'playing' }), 620),
+      setTimeout(() => this.setState({ artIn: true }), 700),
+      setTimeout(() => this.setState({ phase: 'artOut', artIn: false }), 3700),
+      setTimeout(() => this.setState({ step: 'yes', qStep: 0, qOpacity: 0, greetIn: false, leaning: false }), 4250),
+      setTimeout(() => this.setState({ qOpacity: 1, greetIn: true, doneOpacity: 1 }), 4320)
+    ];
+  }
+
+  blank(namn) { return { namn: namn, vigsel: null, rundvandring: null, brollop: null, kor_bil: '', allergier: '', svarat: false }; }
+
+  localLookup(name) {
+    const key = name.trim().toLowerCase().replace(/\s+/g, ' ');
+    const names = this.testFamilies[key] || [name.trim()];
+    return { namn: name.trim(), familj: names.map(n => this.blank(n)), meddelande: '', harSvarat: false };
+  }
+
+  async lookup(name) {
+    if (!this.api) return this.localLookup(name);
+    const url = this.api + (this.api.indexOf('?') > -1 ? '&' : '?') + 'action=lookup&namn=' + encodeURIComponent(name.trim());
+    const data = await (await fetch(url)).json();
+    if (!data.ok) throw new Error(data.error || 'fel');
+    if (!data.found) { const e = new Error('okänd'); e.notFound = true; throw e; }
+    return data;
+  }
+
+  send(personer, meddelande) {
+    const payload = { avsandare: this.state.guestName, meddelande: meddelande || '', personer: personer };
+    try { localStorage.setItem(STORE, JSON.stringify(payload)); } catch (e) {}
+    if (!this.api) return Promise.resolve();
+    return fetch(this.api, { method: 'POST', body: JSON.stringify(payload) })
+      .then(r => r.json())
+      .then(d => { if (!d.ok) throw new Error(d.error || 'fel'); });
+  }
+
+  patch(i, key, value) {
+    this.setState(s => ({ family: s.family.map((p, j) => j === i ? Object.assign({}, p, { [key]: value }) : p) }));
+  }
+
+  move(delta) {
+    const next = this.state.qStep + delta;
+    if (next < 0) {
+      this.timers.forEach(clearTimeout);
+      if (this.fanfare) { this.fanfare.pause(); this.fanfare.currentTime = 0; }
+      this.setState({ step: 'name', phase: 'idle', qStep: 0, qOpacity: 1 });
+      return;
+    }
+    this.timers.push(setTimeout(() => this.setState({ qStep: next, qOpacity: 1 }), 260));
+    this.setState({ qOpacity: 0 });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const namn = s.guestName || s.nameInput;
+    const first = namn.trim().split(' ')[0];
+    const others = s.family.filter(p => p.namn.trim().toLowerCase() !== namn.trim().toLowerCase());
+    const otherFirst = others.map(p => p.namn.trim().split(' ')[0]);
+    const list = otherFirst.length === 0 ? ''
+      : otherFirst.length === 1 ? otherFirst[0]
+      : otherFirst.slice(0, -1).join(', ') + ' och ' + otherFirst[otherFirst.length - 1];
+    const anim = s.phase === 'playing' || s.phase === 'artOut';
+    const q = this.questions[s.qStep] || null;
+
+    const summary = s.family
+      .map(p => {
+        const parts = ['vigsel', 'rundvandring', 'brollop'].filter(k => p[k]).map(k => this.labels[k]);
+        if (!parts.length) return { namn: p.namn, text: 'kommer inte' };
+        const txt = parts.length === 1 ? parts[0] : parts.slice(0, -1).join(', ') + ' och ' + parts[parts.length - 1];
+        return { namn: p.namn, text: txt };
+      });
+
+    return {
+      isName: s.step === 'name',
+      isGreet: s.step === 'greet',
+      isYes: s.step === 'yes',
+      isNo: s.step === 'no',
+      nameInput: s.nameInput,
+      guestName: namn,
+      firstName: first,
+      greetLine: 'Hej ' + first + '!',
+      askLine: list
+        ? 'Varmt välkommen till vårt bröllop. Ska du och ' + list + ' komma?'
+        : 'Varmt välkommen till vårt bröllop. Ska du komma?',
+      schedule: this.schedule,
+      onNameInput: e => this.setState({ nameInput: e.target.value }),
+      continueLabel: s.looking ? 'SÖKER …' : 'FORTSÄTT',
+      hasPrevious: s.hasAnswered,
+      previousNote: 'Ni har redan svarat en gång — skickar ni igen skriver vi över det svaret.',
+      submitName: e => {
+        e.preventDefault();
+        if (s.looking) return;
+        this.leanStart = Date.now();
+        this.setState({ looking: true, leaning: true, error: '' });
+        this.lookup(s.nameInput)
+          .then(r => {
+            const mine = (r.familj || []).find(p => (p.namn || '').trim().toLowerCase() === (r.namn || '').trim().toLowerCase());
+            const bil = mine ? String(mine.kor_bil || '').trim().toUpperCase() : '';
+            this.setState({
+              guestName: r.namn || s.nameInput.trim(),
+              family: (r.familj || []).map(p => p.svarat ? Object.assign(this.blank(p.namn), p) : Object.assign(this.blank(p.namn), p, { vigsel: null, rundvandring: null, brollop: null })),
+              message: r.meddelande || '',
+              hasAnswered: !!r.harSvarat,
+              returning: !!r.harSvarat,
+              submitted: !!r.harSvarat,
+              hasSeats: bil === 'JA' || parseInt(bil, 10) > 0 ? true : (bil === 'NEJ' ? false : null),
+              looking: false, qStep: 0, qOpacity: 1, doneOpacity: 0
+            });
+            this.runIntro();
+          })
+          .catch(err => {
+            if (this.api) {
+              this.setState({
+                looking: false, leaning: false,
+                error: (err && err.notFound)
+                  ? 'Ditt namn hittades inte. Kontakta Erik och Eli om det är fel.'
+                  : 'Kunde inte nå gästlistan just nu. Försök igen om en stund.'
+              });
+              return;
+            }
+            const r = this.localLookup(s.nameInput);
+            this.setState({ guestName: r.namn, family: r.familj, hasAnswered: false, looking: false, qStep: 0, qOpacity: 1 });
+            this.runIntro();
+          });
+      },
+      backToName: () => {
+        this.timers.forEach(clearTimeout);
+        if (this.fanfare) { this.fanfare.pause(); this.fanfare.currentTime = 0; }
+        this.setState({ step: 'name', phase: 'idle', artIn: false, greetIn: false, leaning: false });
+      },
+      backToGreet: () => this.setState({ step: 'greet', greetIn: true }),
+      copyOpacity: s.phase === 'artOut' ? 0 : 1,
+      copyShift: s.phase === 'artOut' ? '-24px' : '0px',
+      copyDown: s.phase === 'artOut' ? '24px' : '0px',
+      copyPointer: s.phase === 'idle' ? 'auto' : 'none',
+      artOpacity: s.phase === 'artOut' ? 0 : 1,
+      artFilter: anim ? 'url(#wind)' : 'none',
+      swayAnim: anim ? 'sway 2.6s ease-in-out infinite' : 'none',
+      leanTransform: s.leaning ? 'rotate(9deg) translateX(14px)' : 'rotate(0deg) translateX(0px)',
+      leanTransition: 'transform .7s cubic-bezier(.2,.7,.3,1)',
+      notesOpacity: anim ? 1 : 0,
+      note1: anim ? 'toot 2.4s ease-out infinite' : 'none',
+      note2: anim ? 'toot 2.4s ease-out infinite 0.8s' : 'none',
+      note3: anim ? 'toot 2.4s ease-out infinite 1.6s' : 'none',
+      note4: anim ? 'toot 2.9s ease-out infinite 0.4s' : 'none',
+      note5: anim ? 'toot 2.9s ease-out infinite 1.3s' : 'none',
+      note6: anim ? 'toot 2.9s ease-out infinite 2.1s' : 'none',
+      greetOpacity: s.greetIn ? 1 : 0,
+      greetShift: s.greetIn ? '0px' : '12px',
+      answerYes: () => this.setState({ step: 'yes', qStep: 0, qOpacity: 1 }),
+      answerNo: () => {
+        const me = s.family.find(p => p.namn.trim().toLowerCase() === namn.trim().toLowerCase()) || this.blank(namn);
+        this.send([Object.assign({}, me, { vigsel: false, rundvandring: false, brollop: false, kor_bil: 'NEJ' })], '').catch(() => {});
+        this.setState({ step: 'no' });
+      },
+
+      isQuestion: s.step === 'yes' && !s.submitted && !!q,
+      isDetails: s.step === 'yes' && !s.submitted && !q,
+      qOpacity: s.qOpacity,
+      qLabel: 'STEG ' + (s.qStep + 1) + ' AV ' + (this.questions.length + 1),
+      qTitle: q ? q.title : '',
+      qMeta: q ? q.meta : '',
+      qShowPeople: !!(q && !q.car),
+      qIsCar: !!(q && q.car),
+      hasSeats: s.hasSeats === true,
+      noCar: s.hasSeats === false,
+      seats: s.seats,
+      toggleSeats: e => this.setState({ hasSeats: e.target.checked ? true : null }),
+      toggleNoCar: e => this.setState({ hasSeats: e.target.checked ? false : null }),
+      onSeats: e => this.setState({ seats: e.target.value }),
+      qHasSlot: !!(q && q.imgId),
+      qHasPhoto: !!(q && q.photo),
+      qHasChurch: !!(q && q.church),
+      qHasTour: !!(q && q.tour),
+      qImgId: q ? q.imgId : '',
+      qImgText: q ? q.imgText : '',
+      people: s.family.map((p, i) => ({
+        namn: p.namn,
+        checked: q ? p[q.key] === true : false,
+        checkedNo: q ? p[q.key] === false : false,
+        toggle: e => { if (q) this.patch(i, q.key, e.target.checked ? true : null); },
+        toggleNo: e => { if (q) this.patch(i, q.key, e.target.checked ? false : null); }
+      })),
+      attendees: s.family
+        .map((p, i) => ({ p: p, i: i }))
+        .filter(x => x.p.vigsel || x.p.rundvandring || x.p.brollop)
+        .map(x => ({
+          allergyLabel: 'Allergier / kostönskemål — ' + x.p.namn,
+          allergier: x.p.allergier,
+          onAllergier: e => this.patch(x.i, 'allergier', e.target.value)
+        })),
+      goNext: () => this.move(1),
+      goBack: () => this.move(-1),
+      summary: summary,
+      seatsNote: s.hasSeats ? 'Ni kommer med bil.' : '',
+      message: s.message,
+      onMessage: e => this.setState({ message: e.target.value }),
+      submitted: s.submitted,
+      doneOpacity: s.doneOpacity,
+      doneTitle: s.returning ? 'Hej igen ' + first + '!' : 'Tack ' + first + '!',
+      doneNote: s.returning
+        ? 'Ni har redan anmält er. Vill ni ändra något? Kontakta Erik eller Eli.'
+        : 'Din anmälan är mottagen.',
+      sendLabel: s.sending ? 'SKICKAR …' : 'SKICKA ANMÄLAN',
+      hasError: !!s.error,
+      errorText: s.error,
+      submitYes: e => {
+        e.preventDefault();
+        if (s.sending) return;
+        this.setState({ sending: true, error: '' });
+        this.send(s.family.map(p => ({ namn: p.namn, vigsel: p.vigsel, rundvandring: p.rundvandring, brollop: p.brollop, kor_bil: (p.namn.trim().toLowerCase() === namn.trim().toLowerCase() ? (s.hasSeats ? 'JA' : 'NEJ') : ''), allergier: p.allergier })), s.message)
+          .then(() => {
+            this.setState({ sending: false, submitted: true, returning: false, doneOpacity: 0 });
+            this.playFanfare();
+            this.timers.push(setTimeout(() => this.setState({ doneOpacity: 1 }), 60));
+          })
+          .catch(() => this.setState({ sending: false, error: 'Kunde inte nå servern. Försök igen om en stund eller hör av dig till oss.' }));
+      },
+      isAdmin: s.isAdmin,
+      answerCount: s.family.length,
+      downloadCsv: () => {
+        const cols = ['namn', 'vigsel', 'rundvandring', 'brollop', 'kor_bil', 'allergier'];
+        const esc = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+        const body = s.family.map(p => cols.map(c => esc(typeof p[c] === 'boolean' ? (p[c] ? 'JA' : 'NEJ') : p[c])).join(','));
+        const blob = new Blob(['\ufeff' + [cols.join(',')].concat(body).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+        const a2 = document.createElement('a');
+        a2.href = URL.createObjectURL(blob);
+        a2.download = 'osa-svar.csv';
+        a2.click();
+        URL.revokeObjectURL(a2.href);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
