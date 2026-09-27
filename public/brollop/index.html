@@ -39,7 +39,7 @@ input,textarea,button{font-family:'Rethink Sans',sans-serif}
 </style>
 </helmet>
 
-<div style="--ink:#1a0089;--bg:#fff3d6;font-family:'Rethink Sans',sans-serif;background:var(--bg);color:var(--ink);box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 10px 40px">
+<div style="--ink:#1a0089;--bg:#fff3d6;font-family:'Rethink Sans',sans-serif;background:var(--bg);color:var(--ink);box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:8px 10px 40px">
 <div style="--w:min(460px, calc(100vw - 20px));position:relative;width:var(--w);min-height:calc(var(--w) * 1.46);box-sizing:border-box;padding:calc(var(--w) * 0.13) calc(var(--w) * 0.11) calc(var(--w) * 0.17);display:flex;flex-direction:column">
 <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column">
 <div style="height:calc(var(--w) * 0.547);background:url('./ram-top.png') top center / 100% 100% no-repeat"></div>
@@ -109,7 +109,7 @@ input,textarea,button{font-family:'Rethink Sans',sans-serif}
 
 <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:20px;transition:opacity .28s ease;opacity:{{ qOpacity }}">
-<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">{{ qLabel }}</div>
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7;text-align:center">{{ qLabel }}</div>
 <div style="font-family:'Homemade Apple',cursive;font-size:30px;line-height:1.45">{{ qTitle }}</div>
 <div style="font-size:14.5px;line-height:1.7;opacity:0.9">{{ qMeta }}</div>
 
@@ -169,7 +169,7 @@ input,textarea,button{font-family:'Rethink Sans',sans-serif}
 
 <sc-if value="{{ isDetails }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:20px;transition:opacity .28s ease;opacity:{{ qOpacity }}">
-<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7">{{ qLabel }}</div>
+<div style="font-size:10px;letter-spacing:3px;font-weight:600;opacity:0.7;text-align:center">{{ qLabel }}</div>
 <div style="font-family:'Homemade Apple',cursive;font-size:30px;line-height:1.45">Några sista detaljer</div>
 
 <sc-for list="{{ attendees }}" as="p" hint-placeholder-count="1">
