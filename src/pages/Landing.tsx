@@ -1,30 +1,36 @@
-import { Link } from 'react-router-dom';
+import './Landing.css'
 
 export default function Landing() {
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center selection:bg-neutral-800 selection:text-white">
-            <main className="space-y-6 animate-fade-in">
-                <h1 className="text-3xl md:text-4xl text-neutral-900 tracking-tight">
-                    Erik Karlkvist
-                </h1>
-
-                <p className="text-neutral-500 text-sm md:text-base font-normal tracking-wide uppercase">
-                    Under konstruktion
-                </p>
-
-                <div className="pt-8 opacity-0 animate-[fade-in_1s_ease-out_0.5s_forwards]">
-                    <Link
-                        to="/explore-components"
-                        className="text-neutral-600 hover:text-neutral-400 text-xs tracking-widest uppercase transition-colors border-b border-transparent hover:border-neutral-800 pb-1"
-                    >
-                        Explore Components
-                    </Link>
+        <div className="wedding-landing">
+            <div className="wedding-landing-frame">
+                <div aria-hidden="true" className="wedding-landing-frame-bg">
+                    <div className="ram-top" />
+                    <div className="ram-mid" />
+                    <div className="ram-bot" />
                 </div>
-            </main>
+                <div className="wedding-landing-content">
+                    <img
+                        src="/brollop/gubbarna.png"
+                        alt="Två gubbar blåser i trumpet"
+                        style={{ width: '86%', marginTop: 'calc(var(--w) * 0.03)', objectFit: 'contain' }}
+                    />
 
-            <footer className="absolute bottom-8 text-neutral-800 text-xs tracking-widest uppercase">
-                2026
-            </footer>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'calc(var(--w) * 0.08)' }}>
+                        <div style={{ fontSize: 12, letterSpacing: 2.5, fontWeight: 500 }}>BRÖLLOP</div>
+                        <div className="wedding-landing-script" style={{ fontSize: 'clamp(34px,10.5vw,48px)', lineHeight: 1.45, marginTop: 14 }}>
+                            Eli &amp; Erik
+                        </div>
+                        <div style={{ fontSize: 12, letterSpacing: 1.5, fontWeight: 500, lineHeight: 1.6, marginTop: 8, textWrap: 'balance' }}>
+                            5 JUNI 2027<br />NÄSINGE KYRKA &amp; FREDRIKSTEN FÄSTNING
+                        </div>
+                    </div>
+
+                    <a href="/brollop/" className="wedding-landing-btn" style={{ marginTop: 40 }}>
+                        Gå till anmälan
+                    </a>
+                </div>
+            </div>
         </div>
     )
 }

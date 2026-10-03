@@ -1,0 +1,78 @@
+.wedding-landing {
+  --ink: #1a0089;
+  --link: #0a5ad6;
+  --bg: #fff3d6;
+  font-family: 'Rethink Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 10px 40px;
+}
+.wedding-landing a {
+  color: var(--link);
+}
+
+.wedding-landing-frame {
+  --w: min(460px, calc(100vw - 20px));
+  position: relative;
+  width: var(--w);
+  min-height: calc(var(--w) * 1.46);
+  box-sizing: border-box;
+  padding: calc(var(--w) * 0.13) calc(var(--w) * 0.11) calc(var(--w) * 0.17);
+  display: flex;
+  flex-direction: column;
+}
+.wedding-landing-frame-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+.wedding-landing-frame-bg .ram-top {
+  height: calc(var(--w) * 0.547);
+  background: url('/brollop/ram-top.png') top center / 100% 100% no-repeat;
+}
+.wedding-landing-frame-bg .ram-mid {
+  flex: 1;
+  background: url('/brollop/ram-mid.png') center / 100% 100% no-repeat;
+}
+.wedding-landing-frame-bg .ram-bot {
+  height: calc(var(--w) * 0.122);
+  background: url('/brollop/ram-bot.png') bottom center / 100% 100% no-repeat;
+}
+
+.wedding-landing-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wedding-landing-script {
+  font-family: 'Homemade Apple', cursive;
+}
+
+.wedding-landing-btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--bg) !important;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  padding: 15px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.wedding-landing-btn:hover {
+  opacity: 0.85;
+}
