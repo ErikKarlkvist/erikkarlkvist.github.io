@@ -46,11 +46,11 @@ export type PracticalInfoItem = { title: string; html: string }
 export const practicalInfo: PracticalInfoItem[] = [
   {
     title: 'Klädsel',
-    html: 'Till vigseln är klädkoden sommarfin. Till middagen önskar vi historisk klädsel eller mörk kostym. Dags att damm av din gamla medeltidsklänning eller din 1800-tals kavaj!',
+    html: 'Till vigseln är klädkoden sommarfin. Till middagen önskar vi historisk klädsel eller mörk kostym. Dags att damma av din gamla medeltidsklänning eller din 1800-tals kavaj!',
   },
   {
     title: 'Boka hotell',
-    html: 'Det är gångavstånd till samtliga hotell. Närmast ligger <a href="https://fredrikstenhotell.no/" target="_blank" rel="noopener">Fredriksten Hotell</a>, direkt på fästningen.<br>Billigare alternativ är <a href="https://grandhotelhalden.no/" target="_blank" rel="noopener">Grand Hotel Halden</a> och <a href="https://www.google.com/maps/search/?api=1&query=Thon+Hotel+Halden+Langbrygga+1+1767+Halden" target="_blank" rel="noopener">Thon Hotel Halden</a> – de ligger nedanför en brant backe.',
+    html: 'Det är gångavstånd till samtliga hotell. Närmast ligger <a href="https://fredrikstenhotell.no/" target="_blank" rel="noopener">Fredriksten Hotell</a>, direkt på fästningen.<br>Andra alternativ är <a href="https://grandhotelhalden.no/" target="_blank" rel="noopener">Grand Hotel Halden</a> och <a href="https://www.google.com/maps/search/?api=1&query=Thon+Hotel+Halden+Langbrygga+1+1767+Halden" target="_blank" rel="noopener">Thon Hotel Halden</a> – de ligger nedanför en brant backe.',
   },
   {
     title: 'Näsinge kyrka',
@@ -58,15 +58,15 @@ export const practicalInfo: PracticalInfoItem[] = [
   },
   {
     title: 'Lunchmottagning',
-    html: 'Ligger på Össby Norrgården 1. <a href="https://www.google.com/maps/search/?api=1&query=N%C3%A4singe+kyrka" target="_blank" rel="noopener">Visa på kartan</a>',
+    html: 'Ligger på Össby Norrgården 1. <a href="https://www.google.com/maps/place/%C3%96ssby+Norrg%C3%A5rden+1,+452+93+Str%C3%B6mstad/@59.0236791,11.3496937" target="_blank" rel="noopener">Visa på kartan</a>',
   },
   {
     title: 'Fredriksten fästning',
-    html: 'Festlokalen och guidningen ligger belägen på en topp mitt i Halden med en del trapport och backar, hör av er om ni skulle behöva stöd. <a href="https://www.google.com/maps/search/?api=1&query=Fredriksten+festning+Halden" target="_blank" rel="noopener">Visa på kartan</a>',
+    html: 'Festlokalen och guidningen ligger belägen på en topp mitt i Halden med en del trappor och backar, hör av er om ni skulle behöva stöd. <a href="https://www.google.com/maps/search/?api=1&query=Fredriksten+festning+Halden" target="_blank" rel="noopener">Visa på kartan</a>',
   },
   {
     title: 'Tal',
-    html: 'Vill du hålla tal, kontakta Linnea.',
+    html: 'Vill du hålla tal, kontakta Linnea på <a href="tel:+46735430537">073-543 05 37</a>.',
   },
   {
     title: 'Bröllopsgåva',
