@@ -33,7 +33,7 @@ export default function DoneStep({ doneOpacity, doneTitle, doneNote, summary, ha
         <img src="/brollop/uploads/PXL_20260903_133805352.TS-000.MP.jpg" alt="Erik och Eli" style={{ aspectRatio: '3/4', objectPosition: '50% 62%' }} />
       </div>
 
-      <div style={{ textAlign: 'center', fontSize: 12, opacity: 0.6, lineHeight: 1.7 }}>Frågor? Hör av dig till Erik på {contactPhone}</div>
+      <div style={{ textAlign: 'center', fontSize: 12, opacity: 0.6, lineHeight: 1.7 }}>Frågor? Hör av dig till Erik på <a href={`tel:+46${contactPhone.replace(/\D/g, '').slice(1)}`}>{contactPhone}</a></div>
     </div>
   )
 }

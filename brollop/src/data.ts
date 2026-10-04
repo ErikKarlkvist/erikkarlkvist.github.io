@@ -70,7 +70,7 @@ export const practicalInfo: PracticalInfoItem[] = [
   },
   {
     title: 'Bröllopsgåva',
-    html: 'Er närvaro på denna dag är den finaste present vi kan få! Vill ni ändå ge något får ni gärna bidra till vår smekmånad till 0705675328.',
+    html: 'Er närvaro på denna dag är den finaste present vi kan få! Vill ni ändå ge något får ni gärna bidra till vår smekmånad till <a href="tel:+46705675328">070-567 53 28</a>.',
   },
 ]
 
