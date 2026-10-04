@@ -4,13 +4,13 @@ type Props = {
   greetIn: boolean
   greetLine: string
   askLine: string
+  buttonLabel: string
   hasPrevious: boolean
-  onYes: () => void
-  onNo: () => void
+  onStart: () => void
   onBackToName: () => void
 }
 
-export default function GreetStep({ greetIn, greetLine, askLine, hasPrevious, onYes, onNo, onBackToName }: Props) {
+export default function GreetStep({ greetIn, greetLine, askLine, buttonLabel, hasPrevious, onStart, onBackToName }: Props) {
   return (
     <div
       style={{
@@ -40,10 +40,7 @@ export default function GreetStep({ greetIn, greetLine, askLine, hasPrevious, on
       </div>
 
       <div style={{ fontSize: 16, lineHeight: 1.7, opacity: 0.92, whiteSpace: 'pre-line' }}>{askLine}</div>
-      <div style={{ display: 'flex', gap: 14, width: '100%', marginTop: 4 }}>
-        <button onClick={onYes} className="brollop-btn-primary" style={{ flex: 1 }}>JA</button>
-        <button onClick={onNo} className="brollop-btn-secondary" style={{ flex: 1 }}>NEJ</button>
-      </div>
+      <button onClick={onStart} className="brollop-btn-primary" style={{ width: '100%', marginTop: 4 }}>{buttonLabel}</button>
       <button onClick={onBackToName} className="brollop-btn-link">Inte du? Byt namn</button>
     </div>
   )

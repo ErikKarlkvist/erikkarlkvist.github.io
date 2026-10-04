@@ -146,6 +146,7 @@ export default function App() {
   }
 
   function backToGreet() {
+    setSubmitted(false)
     setStep('greet')
     setGreetIn(true)
   }
@@ -156,36 +157,32 @@ export default function App() {
     setQOpacity(1)
   }
 
-  function answerNo() {
-    const me = family.find((p) => p.namn.trim().toLowerCase() === guestName.trim().toLowerCase()) || blankPerson(guestName)
-    send({
-      avsandare: guestName,
-      meddelande: '',
-      personer: [{ ...me, vigsel: false, rundvandring: false, brollop: false, kor_bil: 'NEJ' }],
-    }).catch(() => {})
-    setStep('no')
-  }
-
   function patch<K extends keyof Person>(i: number, key: K, value: Person[K]) {
     setFamily((fam) => fam.map((p, j) => (j === i ? { ...p, [key]: value } : p)))
     setQuestionError('')
   }
 
   const isMe = (p: Person) => p.namn.trim().toLowerCase() === guestName.trim().toLowerCase()
+  const isAttending = (p: Person) => !!(p.vigsel || p.rundvandring || p.brollop)
   const hasAnsweredAnything = (p: Person) => p.vigsel !== null || p.rundvandring !== null || p.brollop !== null
 
   function move(delta: number) {
-    const next = qStep + delta
+    let next = qStep + delta
     const current = questions[qStep]
+    const me = family.find(isMe)
     if (delta > 0 && current && current.type !== 'car') {
       const key = current.key as 'vigsel' | 'brollop'
-      const me = family.find(isMe)
       if (me && me[key] === null) {
         setQuestionError('Svara JA eller NEJ för dig själv innan du går vidare.')
         return
       }
     }
     setQuestionError('')
+    // Bilfrågan är onödig om man själv har tackat nej till allt.
+    if (questions[next]?.type === 'car' && me?.vigsel === false && me?.brollop === false) {
+      setHasSeats(null)
+      next += delta
+    }
     if (next < 0) {
       clearTimers()
       setStep('greet')
@@ -225,7 +222,12 @@ export default function App() {
       })
       setSending(false)
       setSubmitted(true)
+      setHasAnswered(true)
       setReturning(false)
+      if (!family.some(isAttending)) {
+        setStep('no')
+        return
+      }
       setDoneOpacity(0)
       playFanfare()
       timers.current.push(window.setTimeout(() => setDoneOpacity(1), 60))
@@ -246,8 +248,8 @@ export default function App() {
         ? otherFirst[0]
         : otherFirst.slice(0, -1).join(', ') + ' och ' + otherFirst[otherFirst.length - 1]
   const askLine = list
-    ? `Varmt välkommen till vårt bröllop.\nSka du och ${list} komma?`
-    : 'Varmt välkommen till vårt bröllop.\nSka du komma?'
+    ? 'Varmt välkommen till vårt bröllop.\nVi hoppas att ni kan komma!'
+    : 'Varmt välkommen till vårt bröllop.\nVi hoppas att du kan komma!'
 
   const q = questions[qStep] || null
   const isQuestion = step === 'yes' && !submitted && !!q
@@ -263,7 +265,7 @@ export default function App() {
 
   const attendees = family
     .map((p, i) => ({ p, i }))
-    .filter((x) => x.p.vigsel || x.p.rundvandring || x.p.brollop)
+    .filter((x) => isAttending(x.p))
     .map((x) => ({ index: x.i, namn: x.p.namn, allergier: x.p.allergier }))
 
   return (
@@ -287,9 +289,9 @@ export default function App() {
             greetIn={greetIn}
             greetLine={`Hej ${first}!`}
             askLine={askLine}
+            buttonLabel={list ? 'ANMÄL ER HÄR' : 'ANMÄL DIG HÄR'}
             hasPrevious={hasAnswered}
-            onYes={answerYes}
-            onNo={answerNo}
+            onStart={answerYes}
             onBackToName={backToName}
           />
         )}
