@@ -58,11 +58,6 @@ export default function QuestionStep({ qOpacity, qLabel, question: q, family, on
             </div>
           ))}
           <div style={{ borderTop: '1.5px solid var(--ink)' }} />
-          {family.length > 1 && (
-            <div style={{ fontSize: 12.5, lineHeight: 1.6, opacity: 0.75, marginTop: 10 }}>
-              Du behöver bara svara för dig själv – de andra kan svara själva.
-            </div>
-          )}
         </div>
       )}
 
