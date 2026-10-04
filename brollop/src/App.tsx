@@ -228,8 +228,8 @@ export default function App() {
         ? otherFirst[0]
         : otherFirst.slice(0, -1).join(', ') + ' och ' + otherFirst[otherFirst.length - 1]
   const askLine = list
-    ? `Varmt välkommen till vårt bröllop. Ska du och ${list} komma?`
-    : 'Varmt välkommen till vårt bröllop. Ska du komma?'
+    ? `Varmt välkommen till vårt bröllop.\nSka du och ${list} komma?`
+    : 'Varmt välkommen till vårt bröllop.\nSka du komma?'
 
   const q = questions[qStep] || null
   const isQuestion = step === 'yes' && !submitted && !!q

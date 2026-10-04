@@ -39,7 +39,7 @@ export default function GreetStep({ greetIn, greetLine, askLine, hasPrevious, on
         <TripInfo />
       </div>
 
-      <div style={{ fontSize: 16, lineHeight: 1.7, opacity: 0.92 }}>{askLine}</div>
+      <div style={{ fontSize: 16, lineHeight: 1.7, opacity: 0.92, whiteSpace: 'pre-line' }}>{askLine}</div>
       <div style={{ display: 'flex', gap: 14, width: '100%', marginTop: 4 }}>
         <button onClick={onYes} className="brollop-btn-primary" style={{ flex: 1 }}>JA</button>
         <button onClick={onNo} className="brollop-btn-secondary" style={{ flex: 1 }}>NEJ</button>
