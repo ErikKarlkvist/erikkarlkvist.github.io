@@ -11,6 +11,7 @@ type Props = {
   onToggleCar: (value: boolean | null) => void
   onBack: () => void
   onNext: () => void
+  errorText: string
 }
 
 const questionImage: Record<string, { src: string; alt: string }> = {
@@ -19,7 +20,7 @@ const questionImage: Record<string, { src: string; alt: string }> = {
   photo: { src: '/brollop/080623_pilgrimsleden_1774_www-vikenfotov-mrrip46n-014v.jpg', alt: 'Fredrikstens fästning' },
 }
 
-export default function QuestionStep({ qOpacity, qLabel, question: q, family, onTogglePerson, hasSeats, onToggleCar, onBack, onNext }: Props) {
+export default function QuestionStep({ qOpacity, qLabel, question: q, family, onTogglePerson, hasSeats, onToggleCar, onBack, onNext, errorText }: Props) {
   const image = q.image ? questionImage[q.image] : null
   const personKey = q.key as 'vigsel' | 'brollop'
 
@@ -57,6 +58,11 @@ export default function QuestionStep({ qOpacity, qLabel, question: q, family, on
             </div>
           ))}
           <div style={{ borderTop: '1.5px solid var(--ink)' }} />
+          {family.length > 1 && (
+            <div style={{ fontSize: 12.5, lineHeight: 1.6, opacity: 0.75, marginTop: 10 }}>
+              Du behöver bara svara för dig själv – de andra kan svara själva.
+            </div>
+          )}
         </div>
       )}
 
@@ -64,6 +70,7 @@ export default function QuestionStep({ qOpacity, qLabel, question: q, family, on
         <button onClick={onBack} className="brollop-btn-secondary">TILLBAKA</button>
         <button onClick={onNext} className="brollop-btn-primary" style={{ flex: 1 }}>NÄSTA</button>
       </div>
+      {errorText && <div style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: 'center' }}>{errorText}</div>}
     </div>
   )
 }

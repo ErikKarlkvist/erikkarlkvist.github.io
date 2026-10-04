@@ -35,6 +35,7 @@ export default function App() {
   const [looking, setLooking] = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
+  const [questionError, setQuestionError] = useState('')
 
   const timers = useRef<number[]>([])
   const fanfare = useRef<HTMLAudioElement | null>(null)
@@ -105,7 +106,7 @@ export default function App() {
       const r = await lookup(nameInput)
       const mine = (r.familj || []).find((p) => p.namn.trim().toLowerCase() === r.namn.trim().toLowerCase())
       const bil = mine ? String(mine.kor_bil || '').trim().toUpperCase() : ''
-      const alreadySubmitted = !!r.harSvarat
+      const alreadySubmitted = !!mine?.svarat
       setGuestName(r.namn || nameInput.trim())
       setFamily(
         (r.familj || []).map((p) =>
@@ -167,10 +168,24 @@ export default function App() {
 
   function patch<K extends keyof Person>(i: number, key: K, value: Person[K]) {
     setFamily((fam) => fam.map((p, j) => (j === i ? { ...p, [key]: value } : p)))
+    setQuestionError('')
   }
+
+  const isMe = (p: Person) => p.namn.trim().toLowerCase() === guestName.trim().toLowerCase()
+  const hasAnsweredAnything = (p: Person) => p.vigsel !== null || p.rundvandring !== null || p.brollop !== null
 
   function move(delta: number) {
     const next = qStep + delta
+    const current = questions[qStep]
+    if (delta > 0 && current && current.type !== 'car') {
+      const key = current.key as 'vigsel' | 'brollop'
+      const me = family.find(isMe)
+      if (me && me[key] === null) {
+        setQuestionError('Svara JA eller NEJ för dig själv innan du går vidare.')
+        return
+      }
+    }
+    setQuestionError('')
     if (next < 0) {
       clearTimers()
       setStep('greet')
@@ -196,14 +211,17 @@ export default function App() {
       await send({
         avsandare: guestName,
         meddelande: message,
-        personer: family.map((p) => ({
-          namn: p.namn,
-          vigsel: p.vigsel,
-          rundvandring: p.rundvandring,
-          brollop: p.brollop,
-          kor_bil: p.namn.trim().toLowerCase() === guestName.trim().toLowerCase() ? (hasSeats ? 'JA' : 'NEJ') : '',
-          allergier: p.allergier,
-        })),
+        // Bara de som faktiskt har fått svar skickas, så att övriga i familjen kan svara själva senare.
+        personer: family
+          .filter((p) => isMe(p) || hasAnsweredAnything(p))
+          .map((p) => ({
+            namn: p.namn,
+            vigsel: p.vigsel,
+            rundvandring: p.rundvandring,
+            brollop: p.brollop,
+            kor_bil: isMe(p) ? (hasSeats ? 'JA' : 'NEJ') : p.kor_bil,
+            allergier: p.allergier,
+          })),
       })
       setSending(false)
       setSubmitted(true)
@@ -236,6 +254,7 @@ export default function App() {
   const isDetails = step === 'yes' && !submitted && !q
 
   const summary = family.map((p) => {
+    if (!hasAnsweredAnything(p)) return { namn: p.namn, text: 'har inte svarat än' }
     const parts = (['vigsel', 'rundvandring', 'brollop'] as const).filter((k) => p[k]).map((k) => labels[k])
     if (!parts.length) return { namn: p.namn, text: 'kommer inte' }
     const text = parts.length === 1 ? parts[0] : parts.slice(0, -1).join(', ') + ' och ' + parts[parts.length - 1]
@@ -288,6 +307,7 @@ export default function App() {
                 onToggleCar={(value) => setHasSeats(value)}
                 onBack={() => move(-1)}
                 onNext={() => move(1)}
+                errorText={questionError}
               />
             )}
 
