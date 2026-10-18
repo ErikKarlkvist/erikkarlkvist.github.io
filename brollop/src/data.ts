@@ -14,11 +14,11 @@ export type ScheduleItem = { time: string; what: string }
 
 export const schedule: ScheduleItem[] = [
   { time: '11:00', what: 'Vigsel i Näsinge kyrka' },
-  { time: '12:00', what: 'Lunch hos Elis föräldrar' },
-  { time: '13:00', what: 'Resa till Halden och incheckning' },
+  { time: '12:00', what: 'Lunchmottagning' },
+  { time: '14:00', what: 'Fri hopp och lek (incheckning, resa till Halden m.m.)' },
   { time: '16:00', what: 'Guidad tur på Fredriksten fästning' },
   { time: '17:00', what: 'Fördrink' },
-  { time: '18:00', what: 'Middag och fest' },
+  { time: '18:00', what: 'Middag och fest!!' },
 ]
 
 export type Question = {
@@ -30,8 +30,8 @@ export type Question = {
 }
 
 export const questions: Question[] = [
-  { key: 'vigsel', title: 'Ska du på vigseln?', meta: 'Kl 11:00 · Näsinge kyrka · 5 juni 2027', image: 'church' },
-  { key: 'brollop', title: 'Ska ni på bröllopsmiddagen?', meta: 'Kl 18:00 · Middag, rundvandring och fest på fästningen', image: 'photo' },
+  { key: 'vigsel', title: 'Kommer ni på vigseln?', meta: 'Kl 11:00 · Näsinge kyrka · 5 juni 2027', image: 'church' },
+  { key: 'brollop', title: 'Kommer ni på bröllopsmiddagen?', meta: 'Kl 18:00 · Middag, rundvandring och fest på fästningen', image: 'photo' },
   { key: 'kor_bil', title: 'Har ni bil?', meta: 'Vi samordnar skjuts till Halden och hör av oss direkt.', type: 'car' },
 ]
 
@@ -45,32 +45,37 @@ export type PracticalInfoItem = { title: string; html: string }
 
 export const practicalInfo: PracticalInfoItem[] = [
   {
-    title: 'Klädsel',
-    html: 'Till vigseln är klädkoden sommarfin. Till middagen önskar vi historisk klädsel eller mörk kostym. Dags att damma av din gamla medeltidsklänning eller din 1800-tals kavaj!',
+    title: 'Klädsel till kvällen',
+    html: 'Vi kommer att ha en historiskt inspirerad bröllopsfest, och önskar att ni också deltar i det om ni har möjlighet! Men vi vill att ni ska känna er bekväma och ha kul, så de är absolut inget tvång, se det som en möjlighet ;) ;) <br/> <br/> <i> Klädkod:</i> Mörk kostym / Historiskt inspirerad klädsel <br/> <br/> Saknar du inspiration? Titta på Ella den Förtrollade, En riddares historia eller varför inte Sagan om ringen eller Game of Thrones? (Elis syster vill gå i en rustning så då vet ni var ribban ligger) Gå loss!',
   },
   {
-    title: 'Boka hotell',
-    html: 'Det är gångavstånd till samtliga hotell. Närmast ligger <a href="https://fredrikstenhotell.no/" target="_blank" rel="noopener">Fredriksten Hotell</a>, direkt på fästningen.<br>Andra alternativ är <a href="https://grandhotelhalden.no/" target="_blank" rel="noopener">Grand Hotel Halden</a> och <a href="https://www.google.com/maps/search/?api=1&query=Thon+Hotel+Halden+Langbrygga+1+1767+Halden" target="_blank" rel="noopener">Thon Hotel Halden</a> – de ligger nedanför en brant backe.',
+    title: 'Klädsel till vigseln',
+html: 'Sommarfint eller något ni är bekväma i!'
   },
+  {
+    title: 'Hotell och övernattning',
+    html: 'Det är gångavstånd till festlokalen från samtliga hotell. Närmast och utan höjdskillnad ligger <a href="https://fredrikstenhotell.no/" target="_blank" rel="noopener">Fredriksten Hotell</a> och <a href="https://visitnorway.se/listings/fredriksten-camping/16202/" target="_blank" rel="noopener">Fredriksten Camping</a>, som ligger direkt på fästningen.<br> <br> Andra alternativ är <a href="https://grandhotelhalden.no/" target="_blank" rel="noopener">Grand Hotel Halden</a> och <a href="https://www.google.com/maps/search/?api=1&query=Thon+Hotel+Halden+Langbrygga+1+1767+Halden" target="_blank" rel="noopener">Thon Hotel Halden</a> som ligger nedanför fästningen i Halden centrum. Strömstad når man med bil på 30 minuter.',
+  },
+  
   {
     title: 'Näsinge kyrka',
-    html: 'Ligger belägen mitt i Näsinge, lunchen efteråt ligger ca 3km därifrån. <a href="https://www.google.com/maps/search/?api=1&query=N%C3%A4singe+kyrka" target="_blank" rel="noopener">Visa på kartan</a>',
+    html: '<a href="https://www.google.com/maps/search/?api=1&query=N%C3%A4singe+kyrka" target="_blank" rel="noopener">Visa på kartan</a>',
   },
   {
     title: 'Lunchmottagning',
-    html: 'Ligger på Össby Norrgården 1. <a href="https://www.google.com/maps/place/%C3%96ssby+Norrg%C3%A5rden+1,+452+93+Str%C3%B6mstad/@59.0236791,11.3496937" target="_blank" rel="noopener">Visa på kartan</a>',
+    html: '<a href="https://www.google.com/maps/place/%C3%96ssby+Norrg%C3%A5rden+1,+452+93+Str%C3%B6mstad/@59.0236791,11.3496937" target="_blank" rel="noopener">Visa på kartan</a>',
   },
   {
     title: 'Fredriksten fästning',
-    html: 'Festlokalen och guidningen ligger belägen på en topp mitt i Halden med en del trappor och backar, hör av er om ni skulle behöva stöd. <a href="https://www.google.com/maps/search/?api=1&query=Fredriksten+festning+Halden" target="_blank" rel="noopener">Visa på kartan</a>',
+    html: 'Bröllopsfesten kommer att vara i Kongshallene på Fredriksten fästning. Fästningen ligger mitt i norska Halden, precis över riksgränsen från Strömstad. Det var på denna fästningen som Karl XII gick mot sin sista vila efter att han tagit sin armé via Näsinge över gränsen. Nu gör vi samma resa fast i kärlekens tecken <333 <a href="https://www.google.com/maps/search/?api=1&query=Fredriksten+festning+Halden" target="_blank" rel="noopener">Visa på kartan</a>',
   },
   {
     title: 'Tal',
-    html: 'Vill du hålla tal, kontakta Linnea på <a href="tel:+46735430537">073-543 05 37</a>.',
+    html: 'Vill du hålla tal eller spexa på något sätt? kontakta Linnéa Bark på <a href="tel:+46735430537">073-543 05 37</a>!',
   },
   {
     title: 'Bröllopsgåva',
-    html: 'Er närvaro på denna dag är den finaste present vi kan få! Vill ni ändå ge något får ni gärna bidra till vår smekmånad till <a href="tel:+46705675328">070-567 53 28</a>.',
+    html: 'Er närvaro på denna dag är den finaste present vi kan få! Vill ni ändå ge något får ni gärna swisha till vår smekmånad till <a href="tel:+46705675328">070-567 53 28</a>.',
   },
 ]
 
