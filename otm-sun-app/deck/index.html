@@ -213,7 +213,7 @@
         <ul class="dots">
           <li><b>React + TypeScript</b> – gränssnitt och all räkning sker i webbläsaren.</li>
           <li><b>Vite</b> – bygger sidan till statiska filer.</li>
-          <li><b>GitHub Pages</b> – serverar filerna. Inget annat körs.</li>
+          <li><b>Statisk hosting</b> – demon ligger på GitHub Pages. I drift kan samma filer läggas på OTM:s webbhotell.</li>
         </ul>
       </div>
       <div class="card">
@@ -277,12 +277,13 @@
     <table style="font-size:.93em">
       <thead><tr><th></th><th>I dag</th><th>Med riktig data</th></tr></thead>
       <tbody>
-        <tr><td>Lutning</td><td>Kunden väljer ett av tre lägen</td><td>Höjddata från laserskanning ger lutning och riktning för varje takyta</td></tr>
+        <tr><td>Lutning</td><td>Tre fasta val</td><td>Höjddata från laserskanning ger lutning och riktning för varje takyta</td></tr>
         <tr><td>Skugga</td><td>Räknas inte</td><td>Samma höjddata visar vad som skuggar taket, timme för timme över året</td></tr>
-        <tr><td>Takanalys</td><td>Kunden ritar en ruta</td><td>Live-AI tolkar flygfotot vid klicket: takytor, skorstenar, takfönster och skuggande träd – och vägs ihop med höjddatan</td></tr>
+        <tr><td>Takanalys</td><td>Kunden ritar en ruta</td><td>Live-AI tolkar flygfotot vid klicket: takytor, hinder och skuggande träd</td></tr>
         <tr><td>Ekonomi</td><td>Årsproduktion × ett elpris</td><td>Timvärden mot kundens förbrukning och spotpris: egenanvändning och återbetalningstid</td></tr>
-        <tr><td>Offert</td><td>Mejl från kundens eget mejlprogram</td><td>Förfrågan landar direkt hos OTM, med analysen sparad</td></tr>
-        <tr><td>Träffsäkerhet</td><td>Okänd</td><td>Jämför kalkylen med vad OTM:s egna anläggningar faktiskt producerar, och justera</td></tr>
+        <tr><td>Offert</td><td>Via kundens mejlprogram</td><td>Förfrågan landar direkt hos OTM, med analysen sparad</td></tr>
+        <tr><td>Träffsäkerhet</td><td>Okänd</td><td>Kalibrera mot vad OTM:s egna anläggningar faktiskt producerar</td></tr>
+        <tr><td>Uppföljning</td><td>Inget mäts</td><td>Analytics med cookiesamtycke, för att följa leads från första klick till offert</td></tr>
       </tbody>
     </table>
     <p class="small muted" style="margin:.8em 0 0">AI-analys och höjddata kan tillsammans höja träffsäkerheten. Lantmäteriet har flygfoton och laserdata för hela landet; villkoren för att använda dem behöver redas ut.</p>
