@@ -11,6 +11,8 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         brollop: fileURLToPath(new URL('./brollop/index.html', import.meta.url)),
+        otmSunApp: fileURLToPath(new URL('./otm-sun-app/index.html', import.meta.url)),
+        otmSunAppDeck: fileURLToPath(new URL('./otm-sun-app/deck/index.html', import.meta.url)),
       },
     },
   },
