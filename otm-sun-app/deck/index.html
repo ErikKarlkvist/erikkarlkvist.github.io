@@ -62,7 +62,7 @@
   .chain em { font-style: normal; font-size: .72em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--sun-ink); }
 
   /* Uträkning: rubrik, formel, resultat */
-  .calc { display: grid; grid-template-columns: auto 1fr auto; gap: .75em 2em; align-items: baseline; align-content: start; }
+  .calc { display: grid; grid-template-columns: auto 1fr auto; gap: .55em 2em; align-items: baseline; align-content: start; }
   .calc > b { font-size: .9em; white-space: nowrap; }
   .calc code { white-space: nowrap; font: .92em/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); }
   .calc strong { font: 500 1.4em/1.1 var(--serif); text-align: right; white-space: nowrap; }
@@ -196,11 +196,12 @@
         <strong>8 300 kr/år</strong>
     </div>
     <div class="grow"></div>
-    <div class="cols" style="--n:3">
+    <div class="cols" style="--n:3; margin-top:1em">
       <p class="small muted" style="margin:0"><b>Panel och marginaler.</b> 430 W, 1,134 × 1,722 m, stående. 30 cm fritt mot ytans kanter och 2 cm mellan panelerna.</p>
-      <p class="small muted" style="margin:0"><b>Plan och tak.</b> Ytan ritas i plan (uppifrån). Därför delas ytan med cos β, och panelens längd i plan blir 1,722 · cos β. Y hämtas per månad ur PVGIS (SARAH-3).</p>
+      <p class="small muted" style="margin:0"><b>Plan och tak.</b> Ytan ritas i plan (uppifrån). Ytan delas därför med cos β, och panelens längd i plan blir 1,722 · cos β.</p>
       <p class="small muted" style="margin:0"><b>Där Google har takdata</b> räknas i stället E = 0,85 · Σ E<sub>DC</sub> över de valda panelerna, med Googles egen placering och skuggmodell.</p>
     </div>
+    <p class="small" style="margin:.8em 0 0; color:var(--sun-ink)"><b>Det här är schabloner.</b> Med er egen data – vad era anläggningar faktiskt producerar – kan varje steg i uträkningen bytas mot en algoritm som stämmer bättre.</p>
   </section>
 
   <!-- 6 -->
@@ -213,7 +214,7 @@
         <ul class="dots">
           <li><b>React + TypeScript</b> – gränssnitt och all räkning sker i webbläsaren.</li>
           <li><b>Vite</b> – bygger sidan till statiska filer.</li>
-          <li><b>Statisk hosting</b> – demon ligger på GitHub Pages. I drift kan samma filer läggas på OTM:s webbhotell.</li>
+          <li><b>Statisk hosting</b> – demon ligger på GitHub Pages. I drift kan samma filer läggas på ert webbhotell.</li>
         </ul>
       </div>
       <div class="card">
@@ -240,7 +241,7 @@
   <!-- 7 -->
   <section class="slide">
     <p class="kicker">Täckning</p>
-    <h2>Googles takdata finns i storstäderna – inte i OTM:s område</h2>
+    <h2>Googles takdata finns i storstäderna – inte i ert område</h2>
     <div class="cols grow">
       <div class="card">
         <h3>Här har Google mätt upp taken</h3>
@@ -266,7 +267,7 @@
       <div class="card"><h3>Enkel panelplacering</h3><p class="muted">Paneler läggs i ett rutnät på den ritade ytan. Takfönster och andra hinder måste kunden rita runt.</p></div>
       <div class="card"><h3>Solvärden för Vetlanda-trakten</h3><p class="muted">Den här demon saknar server och använder en förberäknad PVGIS-tabell. Längre bort blir den mindre exakt.</p></div>
       <div class="card"><h3>Värdet är förenklat</h3><p class="muted">All el gånger ett pris. Ingen skillnad på el man använder själv och el man säljer, inga stöd, ingen investeringskostnad.</p></div>
-      <div class="card"><h3>Inget sparas</h3><p class="muted">OTM ser bara de analyser där kunden faktiskt skickar mejlet. Det finns ingen statistik och ingen uppföljning.</p></div>
+      <div class="card"><h3>Inget sparas</h3><p class="muted">Ni ser bara de analyser där kunden faktiskt skickar mejlet. Det finns ingen statistik och ingen uppföljning.</p></div>
     </div>
   </section>
 
@@ -281,12 +282,12 @@
         <tr><td>Skugga</td><td>Räknas inte</td><td>Samma höjddata visar vad som skuggar taket, timme för timme över året</td></tr>
         <tr><td>Takanalys</td><td>Kunden ritar en ruta</td><td>Live-AI tolkar flygfotot vid klicket: takytor, hinder och skuggande träd</td></tr>
         <tr><td>Ekonomi</td><td>Årsproduktion × ett elpris</td><td>Timvärden mot kundens förbrukning och spotpris: egenanvändning och återbetalningstid</td></tr>
-        <tr><td>Offert</td><td>Via kundens mejlprogram</td><td>Förfrågan landar direkt hos OTM, med analysen sparad</td></tr>
-        <tr><td>Träffsäkerhet</td><td>Okänd</td><td>En algoritm byggd på OTM:s egen data: vad anläggningarna faktiskt producerar jämfört med kalkylen</td></tr>
+        <tr><td>Offert</td><td>Via kundens mejlprogram</td><td>Förfrågan landar direkt hos er, med analysen sparad</td></tr>
+        <tr><td>Träffsäkerhet</td><td>Okänd</td><td>En algoritm byggd på er egen data: vad era anläggningar faktiskt producerar jämfört med kalkylen</td></tr>
         <tr><td>Uppföljning</td><td>Inget mäts</td><td>Analytics med cookiesamtycke, för att följa leads från första klick till offert</td></tr>
       </tbody>
     </table>
-    <p class="small muted" style="margin:.8em 0 0">Med OTM:s egen data – installationer, offerter och uppmätt produktion – kan schablonerna bytas mot en algoritm som är anpassad efter deras tak och kunder. Lantmäteriet har flygfoton och laserdata för hela landet; villkoren behöver redas ut.</p>
+    <p class="small muted" style="margin:.8em 0 0">Med er egen data – installationer, offerter och uppmätt produktion – kan schablonerna bytas mot en algoritm som är anpassad efter era tak och kunder. Lantmäteriet har flygfoton och laserdata för hela landet; villkoren behöver redas ut.</p>
   </section>
 
   <!-- 11 -->
