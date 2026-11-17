@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solkalkyl för OTM – presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #212121; --dark: #2b2b2b; --muted: #636467; --line: #dedede; --bg: #f5f5f5; --panel: #fff;
+    --sun: #eb8b1b; --sun-soft: #fdf0df; --sun-ink: #8a4d06; --weak: #7d93a8; --navy: #14213d;
+    --serif: "Frank Ruhl Libre", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: #111; }
+  body { font-family: Inter, -apple-system, "Segoe UI", sans-serif; color: var(--ink); display: grid; place-items: center; overflow: hidden; }
+
+  /* Scenen håller 16:9 och allt inuti skalar med dess bredd (1em = 1,6 % av bredden) */
+  .stage { width: min(100vw, 177.78vh); aspect-ratio: 16 / 9; container-type: size; position: relative; background: var(--bg); overflow: hidden; }
+  .slide { position: absolute; inset: 0; font-size: 1.6cqw; line-height: 1.45; padding: 3em 5em 4.6em; display: none; flex-direction: column; }
+  .slide.on { display: flex; }
+  .slide.dark { background: var(--ink); color: #fff; }
+
+  .kicker { font-size: .8em; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sun); margin: 0 0 .9em; }
+  h1 { font: 500 4.6em/1.05 var(--serif); margin: 0 0 .35em; text-wrap: balance; }
+  h2 { font: 500 2.5em/1.1 var(--serif); margin: 0 0 .6em; text-wrap: balance; }
+  h3 { font-size: 1.05em; font-weight: 700; margin: 0 0 .35em; }
+  p { margin: 0 0 .8em; }
+  .lead { font-size: 1.45em; line-height: 1.4; max-width: 30em; color: var(--muted); }
+  .dark .lead { color: #c9c9c9; }
+  .muted { color: var(--muted); } .dark .muted { color: #a8a8a8; }
+  .small { font-size: .82em; }
+  .grow { flex: 1; min-height: 0; }
+  .cols { display: grid; gap: 2em; grid-template-columns: repeat(var(--n, 2), 1fr); align-items: stretch; }
+  .card { background: var(--panel); border: 1px solid var(--line); padding: 1.3em 1.5em; border-radius: 2px; }
+  .dark .card { background: #2e2e2e; border-color: #444; }
+  .card.sun { background: var(--sun-soft); border-color: transparent; color: var(--sun-ink); }
+  .card p:last-child { margin-bottom: 0; }
+  .cols.tight { gap: 1em; font-size: .9em; align-content: start; }
+  .cols.tight .card { padding: 1em 1.2em; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  ul.dots li { padding-left: 1.2em; position: relative; margin-bottom: .55em; }
+  ul.dots li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; border-radius: 50%; background: var(--sun); }
+  a { color: inherit; }
+  .btn { display: inline-block; background: var(--sun); color: #fff; font-weight: 700; font-size: .95em; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 1em 1.6em; border-radius: 2px; }
+  .quote { font: 500 1.9em/1.25 var(--serif); margin: 0; }
+
+  /* Stegrutor som i appen */
+  .step { display: flex; flex-direction: column; gap: .8em; }
+  .step .no { width: 5.6em; height: 5.6em; background: var(--ink); color: #fff; padding: .6em .7em; white-space: nowrap; display: flex; flex-direction: column; justify-content: space-between; font-size: .8em; border-radius: 2px; }
+  .step .no b { font: 500 1.7em/1 var(--serif); }
+  .step.on .no { background: var(--sun); }
+  .step svg { width: 100%; height: auto; border-radius: 2px; display: block; }
+
+  /* Uträkningen som en kedja */
+  .chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.6em; }
+  .chain .card { position: relative; padding: 1.1em 1.2em; }
+  .chain .card:not(:last-child)::after { content: "→"; position: absolute; right: -1.25em; top: 50%; transform: translateY(-50%); color: var(--sun); font-size: 1.3em; font-weight: 700; }
+  .chain b { display: block; font: 500 2.1em/1.1 var(--serif); margin: .1em 0 .2em; }
+  .chain span { font-size: .78em; color: var(--muted); display: block; }
+  .chain em { font-style: normal; font-size: .72em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--sun-ink); }
+
+  table { border-collapse: collapse; width: 100%; }
+  th { text-align: left; font-size: .75em; letter-spacing: .12em; text-transform: uppercase; color: var(--sun); padding: 0 1em .7em 0; font-weight: 700; }
+  td { padding: .42em 1em .42em 0; border-top: 1px solid #444; vertical-align: top; }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  td:nth-child(2) { color: #a8a8a8; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: .5em; }
+  .tags span { border: 1px solid var(--line); background: var(--panel); padding: .3em .8em; border-radius: 2px; font-size: .95em; }
+  .tags.no span { border-style: dashed; color: var(--muted); background: none; }
+
+  /* Navigering */
+  nav { position: absolute; left: 0; right: 0; bottom: 0; font-size: 1.6cqw; display: flex; align-items: center; gap: 1em; padding: 0 2em 1.1em 5em; z-index: 5; color: #9a9a9a; }
+  nav .bar { flex: 1; height: 3px; background: rgba(128, 128, 128, .3); }
+  nav .bar i { display: block; height: 100%; background: var(--sun); transition: width .25s; }
+  nav button { font: inherit; font-size: 1.1em; width: 2.2em; height: 2.2em; border: 1px solid rgba(128, 128, 128, .5); background: none; color: inherit; border-radius: 2px; cursor: pointer; }
+  nav button:hover { color: var(--sun); border-color: var(--sun); }
+  nav .count { font-size: .8em; font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: right; }
+
+  /* Stående skärm (mobil): alla bilder under varandra i stället för en i taget */
+  @media (max-aspect-ratio: 1/1) {
+    html, body { height: auto; }
+    body { display: block; overflow: auto; }
+    .stage { width: 100%; aspect-ratio: auto; container-type: normal; overflow: visible; }
+    .slide { position: static; display: flex; font-size: 15px; padding: 36px 20px; min-height: 0; border-bottom: 4px solid var(--sun); }
+    h1 { font-size: 2.5em; } h2 { font-size: 1.9em; }
+    .cols, .chain { grid-template-columns: 1fr; gap: 14px; }
+    .chain .card:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -1.05em; transform: translateX(50%); }
+    table, tbody, tr, td { display: block; } thead { display: none; }
+    td { border: 0; padding: 2px 0; } tr { border-top: 1px solid #444; padding: 10px 0; }
+    nav { display: none; }
+    .grow { flex: none; }
+  }
+  @media print { nav { display: none; } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- 1 -->
+  <section class="slide dark">
+    <div class="grow"></div>
+    <p class="kicker">Prototyp · november 2026</p>
+    <h1>Solkalkyl för tak</h1>
+    <p class="lead">En prototyp där man klickar på ett tak i flygfotot och får en uppskattning av hur mycket solel det kan ge. Här går vi igenom hur den fungerar, vilka tekniker den bygger på och vad som kan bli bättre.</p>
+    <p style="margin-top:1.4em"><a class="btn" href="../">Öppna appen</a></p>
+    <div class="grow"></div>
+    <p class="muted small">Bläddra med piltangenterna eller knapparna nere till höger.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <p class="kicker">Så fungerar det</p>
+    <h2>Tre steg i appen</h2>
+    <div class="cols grow" style="--n:3">
+      <div class="step on">
+        <div class="no"><b>1</b>Välj tak</div>
+        <svg viewBox="0 0 320 180"><rect width="320" height="180" fill="#55713f"/><path d="M0 120h320" stroke="#8d8c86" stroke-width="26"/><rect x="60" y="34" width="110" height="62" fill="#8a4b3a"/><rect x="60" y="34" width="110" height="31" fill="#000" opacity=".18"/><rect x="210" y="40" width="80" height="54" fill="#5f6468"/><circle cx="115" cy="66" r="9" fill="#fff"/><circle cx="115" cy="66" r="5.5" fill="#eb8b1b"/></svg>
+        <p><b>Sök adressen och klicka på taket.</b> Analysen startar direkt.</p>
+      </div>
+      <div class="step">
+        <div class="no"><b>2</b>Justera</div>
+        <svg viewBox="0 0 320 180"><rect width="320" height="180" fill="#55713f"/><rect x="60" y="34" width="200" height="112" fill="#8a4b3a"/><rect x="60" y="34" width="200" height="56" fill="#000" opacity=".18"/><rect x="74" y="96" width="172" height="42" fill="#eb8b1b" fill-opacity=".35" stroke="#eb8b1b" stroke-width="3"/><g fill="#14213d" stroke="#eb8b1b" stroke-width=".8"><rect x="80" y="101" width="24" height="32"/><rect x="107" y="101" width="24" height="32"/><rect x="134" y="101" width="24" height="32"/><rect x="161" y="101" width="24" height="32"/><rect x="188" y="101" width="24" height="32"/><rect x="215" y="101" width="24" height="32"/></g><g fill="#fff" stroke="#eb8b1b" stroke-width="3"><circle cx="74" cy="96" r="6"/><circle cx="246" cy="96" r="6"/><circle cx="246" cy="138" r="6"/><circle cx="74" cy="138" r="6"/></g></svg>
+        <p><b>Dra i rutan tills den täcker takytan.</b> Välj lutning och vrid kompassen åt det håll taket lutar.</p>
+      </div>
+      <div class="step">
+        <div class="no"><b>3</b>Analys</div>
+        <svg viewBox="0 0 320 180"><rect width="320" height="180" fill="#fff"/><rect x="16" y="14" width="288" height="56" fill="#212121"/><text x="28" y="34" font-size="9" font-weight="700" fill="#eb8b1b" font-family="Inter,sans-serif" letter-spacing="1">UPPSKATTAD ÅRSPRODUKTION</text><text x="28" y="60" font-size="24" fill="#fff" font-family="Georgia,serif">5 540 kWh/år</text><g fill="#eb8b1b"><rect x="18" y="150" width="20" height="8"/><rect x="42" y="142" width="20" height="16"/><rect x="66" y="124" width="20" height="34"/><rect x="90" y="108" width="20" height="50"/><rect x="114" y="98" width="20" height="60"/><rect x="138" y="94" width="20" height="64"/><rect x="162" y="96" width="20" height="62"/><rect x="186" y="106" width="20" height="52"/><rect x="210" y="122" width="20" height="36"/><rect x="234" y="138" width="20" height="20"/><rect x="258" y="150" width="20" height="8"/><rect x="282" y="153" width="20" height="5"/></g></svg>
+        <p><b>Se vad taket kan ge.</b> Produktion per år och månad, antal paneler och värdet i kronor. Be om offert eller dela länken.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <p class="kicker">Under huven</p>
+    <h2>Två vägar till samma analys</h2>
+    <svg class="grow" viewBox="0 0 1000 330" style="width:100%" font-family="Inter,sans-serif" font-size="15">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#636467"/></marker></defs>
+      <g fill="none" stroke="#636467" stroke-width="2" marker-end="url(#a)">
+        <path d="M150 165H205"/><path d="M330 120V75H405"/><path d="M330 210V255H405"/>
+        <path d="M625 75H680V140"/><path d="M505 255H540"/><path d="M660 255H680V190"/><path d="M760 165H815"/>
+      </g>
+      <g>
+        <rect x="10" y="130" width="140" height="70" fill="#212121"/><text x="80" y="160" fill="#fff" text-anchor="middle" font-weight="700">Klick</text><text x="80" y="180" fill="#c9c9c9" text-anchor="middle" font-size="13">på taket</text>
+        <path d="M330 105L455 165L330 225L205 165Z" fill="#fdf0df" stroke="#eb8b1b" stroke-width="2"/><text x="330" y="160" text-anchor="middle" font-weight="700" fill="#8a4d06">Har Google</text><text x="330" y="180" text-anchor="middle" font-weight="700" fill="#8a4d06">takdata här?</text>
+        <text x="345" y="92" fill="#636467" font-size="13">Ja</text><text x="345" y="248" fill="#636467" font-size="13">Nej</text>
+        <rect x="405" y="40" width="220" height="70" fill="#fff" stroke="#dedede"/><text x="515" y="68" text-anchor="middle" font-weight="700">Googles takanalys</text><text x="515" y="89" text-anchor="middle" font-size="13" fill="#636467">ytor, uppmätt lutning, paneler</text>
+        <rect x="405" y="220" width="100" height="70" fill="#fff" stroke="#dedede"/><text x="455" y="250" text-anchor="middle" font-weight="700">Ruta</text><text x="455" y="270" text-anchor="middle" font-size="13" fill="#636467">kunden justerar</text>
+        <rect x="540" y="220" width="120" height="70" fill="#fff" stroke="#dedede"/><text x="600" y="250" text-anchor="middle" font-weight="700">PVGIS</text><text x="600" y="270" text-anchor="middle" font-size="13" fill="#636467">solinstrålning</text>
+        <rect x="600" y="140" width="160" height="50" fill="#eb8b1b"/><text x="680" y="171" text-anchor="middle" font-weight="700" fill="#fff">Analys</text>
+        <rect x="815" y="125" width="175" height="80" fill="#212121"/><text x="902" y="158" fill="#fff" text-anchor="middle" font-weight="700">Offert via mejl</text><text x="902" y="180" fill="#c9c9c9" text-anchor="middle" font-size="13">+ delningsbar länk</text>
+      </g>
+    </svg>
+    <p class="muted" style="margin:0">Där Google har mätt upp taket används det direkt. Annars ritar kunden, och solinstrålningen kommer från EU:s databas PVGIS. Kunden kan alltid välja att rita själv.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <p class="kicker">Uträkningen</p>
+    <h2>Från en ruta på taket till kronor per år</h2>
+    <div class="chain">
+      <div class="card"><em>Takyta</em><b>50 m²</b><span>En ruta på 9 × 5 m sedd uppifrån, på ett tak med 27° lutning.</span></div>
+      <div class="card"><em>Paneler</em><b>14 st</b><span>Stående paneler i rader, med 30 cm marginal mot kanterna.</span></div>
+      <div class="card"><em>Effekt</em><b>6,0 kWp</b><span>14 paneler × 430 W.</span></div>
+      <div class="card"><em>Produktion</em><b>5 500 kWh</b><span>× cirka 920 kWh per kWp och år i söderläge i Vetlanda, enligt PVGIS.</span></div>
+      <div class="card sun"><em>Värde</em><b>8 300 kr</b><span style="color:inherit">× 1,50 kr per kWh. Elpriset ställer kunden in själv.</span></div>
+    </div>
+    <div class="grow"></div>
+    <div class="cols" style="--n:3">
+      <p class="small muted"><b>Riktningen spelar stor roll.</b> Samma tak ger cirka 930 kWh per kWp mot söder, 740 mot öster eller väster och 510 mot norr (30° lutning).</p>
+      <p class="small muted"><b>Förluster är medräknade.</b> 14 % för växelriktare, kablar och smuts dras av innan siffran visas.</p>
+      <p class="small muted"><b>Allt räknas om direkt.</b> Drar kunden i rutan eller vrider kompassen uppdateras paneler och produktion på en gång.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <p class="kicker">Tech stack</p>
+    <h2>En webbsida och fyra tjänster – ingen egen server</h2>
+    <div class="cols grow" style="--n:3">
+      <div class="card">
+        <h3>Appen</h3>
+        <ul class="dots">
+          <li><b>React + TypeScript</b> – gränssnitt och all räkning sker i webbläsaren.</li>
+          <li><b>Vite</b> – bygger sidan till statiska filer.</li>
+          <li><b>GitHub Pages</b> – serverar filerna. Inget annat körs.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tjänster den frågar</h3>
+        <ul class="dots">
+          <li><b>Google Maps</b> – flygfoto och karta.</li>
+          <li><b>Google Places</b> – adressök.</li>
+          <li><b>Google Solar API</b> – färdig takanalys, där den finns.</li>
+          <li><b>PVGIS</b> – solinstrålning från EU-kommissionen.</li>
+        </ul>
+      </div>
+      <div class="card sun">
+        <h3>Vad som inte finns</h3>
+        <ul class="dots">
+          <li>Ingen backend och ingen databas.</li>
+          <li>Inga konton och inget som sparas om kunden.</li>
+          <li>Delningslänken bär hela analysen i adressen.</li>
+          <li>Offerten går som ett vanligt mejl från kundens eget mejlprogram.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <p class="kicker">Täckning</p>
+    <h2>Googles takdata finns i storstäderna – inte i OTM:s område</h2>
+    <div class="cols grow">
+      <div class="card">
+        <h3>Här har Google mätt upp taken</h3>
+        <div class="tags"><span>Jönköping</span><span>Växjö</span><span>Linköping</span><span>Stockholm</span><span>Göteborg</span><span>Malmö</span></div>
+        <p class="muted" style="margin-top:1.2em">Ett klick ger en färdig analys av hela byggnaden, med uppmätt lutning och panelplacering.</p>
+      </div>
+      <div class="card">
+        <h3>Här saknas data</h3>
+        <div class="tags no"><span>Vetlanda</span><span>Eksjö</span><span>Nässjö</span><span>Sävsjö</span><span>Vimmerby</span><span>Tranås</span></div>
+        <p class="muted" style="margin-top:1.2em">Här tar ritläget över automatiskt: en ruta läggs på taket och kunden justerar den.</p>
+      </div>
+    </div>
+    <p class="small muted" style="margin:1.2em 0 0">Testat mot Solar API den 17 november 2026, med en eller två punkter per ort. Täckningen kan ha ändrats sedan dess.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <p class="kicker">Begränsningar</p>
+    <h2>Vad siffran inte tar hänsyn till i dag</h2>
+    <div class="cols grow tight" style="--n:3">
+      <div class="card"><h3>Lutningen är en gissning</h3><p class="muted">I ritläget väljer kunden mellan flackt, normalt och brant. Fel val flyttar resultatet några procent.</p></div>
+      <div class="card"><h3>Ingen skuggning</h3><p class="muted">Träd, grannhus och skorstenar räknas inte. Ett skuggat tak får en för hög siffra.</p></div>
+      <div class="card"><h3>Enkel panelplacering</h3><p class="muted">Paneler läggs i ett rutnät på den ritade ytan. Takfönster och andra hinder måste kunden rita runt.</p></div>
+      <div class="card"><h3>Solvärden för Vetlanda-trakten</h3><p class="muted">Den här demon saknar server och använder en förberäknad PVGIS-tabell. Längre bort blir den mindre exakt.</p></div>
+      <div class="card"><h3>Värdet är förenklat</h3><p class="muted">All el gånger ett pris. Ingen skillnad på el man använder själv och el man säljer, inga stöd, ingen investeringskostnad.</p></div>
+      <div class="card"><h3>Inget sparas</h3><p class="muted">OTM ser bara de analyser där kunden faktiskt skickar mejlet. Det finns ingen statistik och ingen uppföljning.</p></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide dark">
+    <p class="kicker">Förbättringar</p>
+    <h2 style="margin-bottom:.45em">Med riktig data kan vi bygga en riktig algoritm</h2>
+    <table style="font-size:.93em">
+      <thead><tr><th></th><th>I dag</th><th>Med riktig data</th></tr></thead>
+      <tbody>
+        <tr><td>Lutning</td><td>Kunden väljer ett av tre lägen</td><td>Höjddata från laserskanning ger lutning och riktning för varje takyta</td></tr>
+        <tr><td>Skugga</td><td>Räknas inte</td><td>Samma höjddata visar vad som skuggar taket, timme för timme över året</td></tr>
+        <tr><td>Takytor</td><td>Kunden ritar en ruta</td><td>Bildanalys hittar takytor, skorstenar och takfönster i flygfotot</td></tr>
+        <tr><td>Ekonomi</td><td>Årsproduktion × ett elpris</td><td>Timvärden mot kundens förbrukning och spotpris: egenanvändning och återbetalningstid</td></tr>
+        <tr><td>Offert</td><td>Mejl från kundens eget mejlprogram</td><td>Förfrågan landar direkt hos OTM, med analysen sparad</td></tr>
+        <tr><td>Träffsäkerhet</td><td>Okänd</td><td>Jämför kalkylen med vad OTM:s egna anläggningar faktiskt producerar, och justera</td></tr>
+      </tbody>
+    </table>
+    <p class="small muted" style="margin:1em 0 0">Lantmäteriet har både flygfoton och laserdata över hela landet. Vilka villkor som gäller för att använda dem så här är nästa sak att reda ut.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide dark">
+    <div class="grow"></div>
+    <p class="kicker">Demo</p>
+    <h1>Prova själv</h1>
+    <div class="cols" style="--n:3; margin:.4em 0 2em">
+      <div class="card"><h3>Ritläget</h3><p class="muted">Sök en adress i Vetlanda eller Eksjö och klicka på taket.</p></div>
+      <div class="card"><h3>Googles analys</h3><p class="muted">Sök en adress i Jönköping eller Växjö. Klicka bort en panel och se siffrorna ändras.</p></div>
+      <div class="card"><h3>Delning</h3><p class="muted">Tryck Dela i analysen och öppna länken i ett nytt fönster.</p></div>
+    </div>
+    <p><a class="btn" href="../">Öppna appen</a></p>
+    <div class="grow"></div>
+  </section>
+
+  <nav>
+    <div class="bar"><i id="bar"></i></div>
+    <span class="count" id="count"></span>
+    <button id="prev" aria-label="Föregående bild">←</button>
+    <button id="next" aria-label="Nästa bild">→</button>
+  </nav>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let at = Math.min(slides.length, Math.max(1, parseInt(location.hash.slice(1), 10) || 1)) - 1;
+
+  function show(index) {
+    at = Math.min(slides.length - 1, Math.max(0, index));
+    slides.forEach((slide, i) => slide.classList.toggle('on', i === at));
+    document.getElementById('bar').style.width = ((at + 1) / slides.length) * 100 + '%';
+    document.getElementById('count').textContent = at + 1 + ' / ' + slides.length;
+    // Navigeringen ska synas mot både ljusa och mörka bilder
+    document.querySelector('nav').style.color = slides[at].classList.contains('dark') ? '#9a9a9a' : '#636467';
+    history.replaceState(null, '', '#' + (at + 1));
+  }
+
+  document.getElementById('prev').onclick = () => show(at - 1);
+  document.getElementById('next').onclick = () => show(at + 1);
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(at + 1); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(at - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+  });
+  show(at);
+</script>
+</body>
+</html>
