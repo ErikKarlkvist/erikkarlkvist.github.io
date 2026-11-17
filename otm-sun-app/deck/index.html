@@ -61,9 +61,17 @@
   .chain span { font-size: .78em; color: var(--muted); display: block; }
   .chain em { font-style: normal; font-size: .72em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--sun-ink); }
 
+  /* Uträkning: rubrik, formel, resultat */
+  .calc { display: grid; grid-template-columns: auto 1fr auto; gap: .75em 2em; align-items: baseline; align-content: start; }
+  .calc > b { font-size: .9em; white-space: nowrap; }
+  .calc code { white-space: nowrap; font: .92em/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); }
+  .calc strong { font: 500 1.4em/1.1 var(--serif); text-align: right; white-space: nowrap; }
+  .calc > :nth-last-child(-n + 3) { color: var(--sun-ink); }
+  sub { font-size: .7em; }
+
   table { border-collapse: collapse; width: 100%; }
   th { text-align: left; font-size: .75em; letter-spacing: .12em; text-transform: uppercase; color: var(--sun); padding: 0 1em .7em 0; font-weight: 700; }
-  td { padding: .42em 1em .42em 0; border-top: 1px solid #444; vertical-align: top; }
+  td { padding: .34em 1em .34em 0; border-top: 1px solid #444; vertical-align: top; }
   td:first-child { font-weight: 700; white-space: nowrap; }
   td:nth-child(2) { color: #a8a8a8; }
 
@@ -86,7 +94,8 @@
     .stage { width: 100%; aspect-ratio: auto; container-type: normal; overflow: visible; }
     .slide { position: static; display: flex; font-size: 15px; padding: 36px 20px; min-height: 0; border-bottom: 4px solid var(--sun); }
     h1 { font-size: 2.5em; } h2 { font-size: 1.9em; }
-    .cols, .chain { grid-template-columns: 1fr; gap: 14px; }
+    .cols, .chain { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .calc { grid-template-columns: 1fr; gap: 2px; } .calc strong { text-align: left; margin-bottom: 12px; } .calc code { white-space: normal; }
     .chain .card:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -1.05em; transform: translateX(50%); }
     table, tbody, tr, td { display: block; } thead { display: none; }
     td { border: 0; padding: 2px 0; } tr { border-top: 1px solid #444; padding: 10px 0; }
@@ -160,19 +169,37 @@
   <!-- 5 -->
   <section class="slide">
     <p class="kicker">Uträkningen</p>
-    <h2>Från en ruta på taket till kronor per år</h2>
-    <div class="chain">
-      <div class="card"><em>Takyta</em><b>50 m²</b><span>En ruta på 9 × 5 m sedd uppifrån, på ett tak med 27° lutning.</span></div>
-      <div class="card"><em>Paneler</em><b>14 st</b><span>Stående paneler i rader, med 30 cm marginal mot kanterna.</span></div>
-      <div class="card"><em>Effekt</em><b>6,0 kWp</b><span>14 paneler × 430 W.</span></div>
-      <div class="card"><em>Produktion</em><b>5 500 kWh</b><span>× cirka 920 kWh per kWp och år i söderläge i Vetlanda, enligt PVGIS.</span></div>
-      <div class="card sun"><em>Värde</em><b>8 300 kr</b><span style="color:inherit">× 1,50 kr per kWh. Elpriset ställer kunden in själv.</span></div>
+    <h2>Räkneexempel: 9 × 5 m, 27° lutning, mot söder</h2>
+    <div class="calc">
+      <b>1 · Takyta</b>
+        <code>A = A<sub>plan</sub> / cos β = 45 / cos 27°</code>
+        <strong>50,5 m²</strong>
+
+        <b>2 · Paneler</b>
+        <code>kolumner = ⌊(9,0 − 2·0,30) / (1,134 + 0,02)⌋ = 7<br>rader = ⌊(5,0 − 2·0,30) / (1,722·cos 27° + 0,02)⌋ = 2</code>
+        <strong>14 st</strong>
+
+        <b>3 · Effekt</b>
+        <code>P = n · P<sub>panel</sub> = 14 · 0,43 kWp</code>
+        <strong>6,0 kWp</strong>
+
+        <b>4 · Utbyte</b>
+        <code>Y = PVGIS(plats, β, azimut), 14 % förluster</code>
+        <strong>920 kWh/kWp</strong>
+
+        <b>5 · Årsproduktion</b>
+        <code>E = P · Y = 6,02 · 920</code>
+        <strong>5 540 kWh</strong>
+
+        <b>6 · Värde</b>
+        <code>E · elpris = 5 540 · 1,50 kr/kWh</code>
+        <strong>8 300 kr/år</strong>
     </div>
     <div class="grow"></div>
     <div class="cols" style="--n:3">
-      <p class="small muted"><b>Riktningen spelar stor roll.</b> Samma tak ger cirka 930 kWh per kWp mot söder, 740 mot öster eller väster och 510 mot norr (30° lutning).</p>
-      <p class="small muted"><b>Förluster är medräknade.</b> 14 % för växelriktare, kablar och smuts dras av innan siffran visas.</p>
-      <p class="small muted"><b>Allt räknas om direkt.</b> Drar kunden i rutan eller vrider kompassen uppdateras paneler och produktion på en gång.</p>
+      <p class="small muted" style="margin:0"><b>Panel och marginaler.</b> 430 W, 1,134 × 1,722 m, stående. 30 cm fritt mot ytans kanter och 2 cm mellan panelerna.</p>
+      <p class="small muted" style="margin:0"><b>Plan och tak.</b> Ytan ritas i plan (uppifrån). Därför delas ytan med cos β, och panelens längd i plan blir 1,722 · cos β. Y hämtas per månad ur PVGIS (SARAH-3).</p>
+      <p class="small muted" style="margin:0"><b>Där Google har takdata</b> räknas i stället E = 0,85 · Σ E<sub>DC</sub> över de valda panelerna, med Googles egen placering och skuggmodell.</p>
     </div>
   </section>
 
@@ -252,13 +279,13 @@
       <tbody>
         <tr><td>Lutning</td><td>Kunden väljer ett av tre lägen</td><td>Höjddata från laserskanning ger lutning och riktning för varje takyta</td></tr>
         <tr><td>Skugga</td><td>Räknas inte</td><td>Samma höjddata visar vad som skuggar taket, timme för timme över året</td></tr>
-        <tr><td>Takytor</td><td>Kunden ritar en ruta</td><td>Bildanalys hittar takytor, skorstenar och takfönster i flygfotot</td></tr>
+        <tr><td>Takanalys</td><td>Kunden ritar en ruta</td><td>Live-AI tolkar flygfotot vid klicket: takytor, skorstenar, takfönster och skuggande träd – och vägs ihop med höjddatan</td></tr>
         <tr><td>Ekonomi</td><td>Årsproduktion × ett elpris</td><td>Timvärden mot kundens förbrukning och spotpris: egenanvändning och återbetalningstid</td></tr>
         <tr><td>Offert</td><td>Mejl från kundens eget mejlprogram</td><td>Förfrågan landar direkt hos OTM, med analysen sparad</td></tr>
         <tr><td>Träffsäkerhet</td><td>Okänd</td><td>Jämför kalkylen med vad OTM:s egna anläggningar faktiskt producerar, och justera</td></tr>
       </tbody>
     </table>
-    <p class="small muted" style="margin:1em 0 0">Lantmäteriet har både flygfoton och laserdata över hela landet. Vilka villkor som gäller för att använda dem så här är nästa sak att reda ut.</p>
+    <p class="small muted" style="margin:.8em 0 0">AI-analys och höjddata kan tillsammans höja träffsäkerheten. Lantmäteriet har flygfoton och laserdata för hela landet; villkoren för att använda dem behöver redas ut.</p>
   </section>
 
   <!-- 11 -->
